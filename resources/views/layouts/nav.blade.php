@@ -13,7 +13,11 @@
     </div><!-- /.navbar-header -->
        
     <ul class="nav navbar-nav navbar-right">
-        <li><a href="{{URL('/login')}}">Login</a></li>
+        @if (Auth::check())
+            <li><a href="{{URL('/logout')}}">Logout</a></li>
+        @else
+            <li><a href="{{URL('/login')}}">Login</a></li>
+        @endif
 
     </ul><!-- /.navbar-right -->
 
