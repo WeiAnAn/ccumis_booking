@@ -7,13 +7,13 @@
             <span class="icon-bar"></span>
         </button>
   
-        <a class="navbar-brand" href="{{URL('/booking')}}"><b>中正大學資管系 教室借用系統</b></a>
-        <a class="navbar-brand" href="{{URL('/booking/search')}}">教室查詢</a>
-        <a class="navbar-brand" href="{{URL('/booking/rule')}}">使用規範</a>
+        <a class="navbar-brand" href="{{URL('/')}}"><b>中正大學資管系 教室借用系統</b></a>
+        <a class="navbar-brand" href="{{URL('/search')}}">教室查詢</a>
+        <a class="navbar-brand" href="{{URL('/rule')}}">使用規範</a>
     </div><!-- /.navbar-header -->
        
     <ul class="nav navbar-nav navbar-right">
-        <li><a href="{{URL('/booking/login')}}">Login</a></li>
+        <li><a href="{{URL('/login')}}">Login</a></li>
 
     </ul><!-- /.navbar-right -->
 
