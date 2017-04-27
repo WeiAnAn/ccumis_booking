@@ -14,9 +14,16 @@
        
     <ul class="nav navbar-nav navbar-right">
         @if (Auth::check())
-            <li><a href="{{URL('/logout')}}">Logout</a></li>
+            <li>
+                <a onclick="document.getElementById('logout_form').submit()" style="cursor:pointer">登出</a>
+                <form id="logout_form" action="{{URL('/logout')}}" method="post">
+                    {{ csrf_field() }}
+                </form>
+            </li>
+            
         @else
-            <li><a href="{{URL('/login')}}">Login</a></li>
+            <li><a href="{{URL('/register')}}">註冊</a></li>
+            <li><a href="{{URL('/login')}}">登入</a></li>
         @endif
 
     </ul><!-- /.navbar-right -->
