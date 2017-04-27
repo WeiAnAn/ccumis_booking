@@ -16,10 +16,12 @@
     <script src="{{asset('js/moment.js')}}"></script>
 </head>
 <body>
-    @include('layouts.nav')
-    <div class="container">
-        @yield('content')
+    <div class="wrapper">
+        @include('layouts.nav')
+        <div class="container">
+            @yield('content')
+        </div>
+        @include('layouts.footer')
     </div>
-    @include('layouts.footer')
 </body>
 </html>
