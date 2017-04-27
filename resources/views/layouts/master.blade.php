@@ -8,7 +8,8 @@
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/custom_base.css')}}" rel="stylesheet">
     
-    <script src="{{asset('js/bootstrap.min.js.js')}}"></script>
+    <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
 </head>
 <body>
     @include('layouts.nav')
