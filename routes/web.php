@@ -19,9 +19,19 @@ Route::get('now', function () {
         return date("Y-m-d H:i:s");
 });
 
+Route::get('/register', function(){
+        return view('register');
+});
+
 /*for test*/
-Route::get('login', function() {
+Route::get('/login', function() {
         return view('login');
 })->name('login');
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
 ?>
+
+
