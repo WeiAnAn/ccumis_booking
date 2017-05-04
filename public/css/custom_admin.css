@@ -1,0 +1,38 @@
+.custom_adposition{
+    width: 15%;
+    position: absolute;
+} 
+
+.custom_adtabContent{
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    margin-left: 25%;
+}
+
+.custom_adselect{
+    width: 60px;
+    height: 34px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-left: 5px;
+}
+
+.custom_adbtn{
+    margin-bottom: 3px;
+    margin-left: 5px;
+}
+
+.custom_adinput{
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.custom_adnavbar{
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+.custom_adtable{
+    width: 150px;
+}
