@@ -1,14 +1,6 @@
 .custom_adposition{
-    width: 15%;
-    position: absolute;
+    width: 195px;
 } 
-
-.custom_adtabContent{
-    display: inline-block;
-    position: relative;
-    vertical-align: top;
-    margin-left: 25%;
-}
 
 .custom_adselect{
     width: 60px;
@@ -33,6 +25,10 @@
     padding-right: 70px;
 }
 
-.custom_adtable{
-    width: 150px;
+.custom_adnav{
+    width: 300px;
+}
+
+.custom_adcontent{
+    margin-top: 30px;
 }

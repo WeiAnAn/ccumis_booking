@@ -32,10 +32,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/admin', function () {
-    return view('admin.admin');
+Route::get('/admin/room_manage', function () {
+    return view('admin.room_manage');
 });
 
+Route::get('/admin/room_record', function () {
+    return view('admin.room_record');
+});
 ?>
 
 
