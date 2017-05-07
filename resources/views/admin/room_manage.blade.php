@@ -27,42 +27,35 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($classrooms as $classroom)
                             <tr>
-                                <td>119</td>
-                                <td>119</td>
+                                <td>{{$classroom->name}}</td>
+                                <td>{{$classroom->count}}</td>
                                 <td>
-                                    <a href="{{URL('/admin/roomUpdate')}}" title="修改">
+                                    <a href='{{URL("/admin/room_edit/$classroom->id")}}' title="修改">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </a>
-                                    <a href="{{URL('/admin/roomDelete')}}" title="刪除">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </a>
+                                    <form style="display:inline-block" action='{{URL("/admin/room_delete/$classroom->id")}}' method="post">
+                                        {{csrf_field()}}
+                                        <button class="glyphicon glyphicon-trash delete_btn"  title="刪除">
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>221</td>
-                                <td>221</td>
-                                <td>
-                                    <a href="{{URL('/admin/roomUpdate')}}" title="修改">
-                                        <span class="glyphicon glyphicon-pencil"></span>
-                                    </a>
-                                    <a href="{{URL('/admin/roomDelete')}}" title="刪除">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </a>
-                                </td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div> 
                 <div role="tabpanel" class="tab-pane custom_adcontent" id="create">
-                    <form action="#" method="post">
+                    <form action="{{URL('/admin/room_add')}}" method="post">
+                        {{csrf_field()}}
                         <div class="form-group">
                             <label for="roomName">教室名稱</label>
-                            <input type="text" class="form-control" id="roomName" placeholder="room">
+                            <input type="text" class="form-control" id="roomName"  name="name" placeholder="room">
                         </div>
                         <div class="form-group">
                             <label for="numberOfpeople">容納人數</label>
-                            <input type="text" class="form-control" id="numberOfpeople" placeholder="people">
+                            <input type="text" class="form-control" id="numberOfpeople" name="count" placeholder="people">
                         </div>
                         <button type="submit" class="btn btn-primary">新增</button>
                     </form>
