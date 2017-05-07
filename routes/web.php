@@ -30,11 +30,14 @@ Route::get('/login', function() {
 
 Auth::routes();
 
+
 Route::get('/home', 'HomeController@index');
 
-Route::get('/admin/room_manage', function () {
-    return view('admin.room_manage');
-});
+Route::get('/admin/room_manage', 'ClassroomController@index');
+Route::post('/admin/room_add', 'ClassroomController@add');
+Route::post('/admin/room_delete/{id}', 'ClassroomController@delete');
+Route::get('/admin/room_edit/{id}', 'ClassroomController@edit');
+Route::post('/admin/room_update/{id}', 'ClassroomController@update');
 
 Route::get('/admin/room_record', function () {
     return view('admin.room_record');
