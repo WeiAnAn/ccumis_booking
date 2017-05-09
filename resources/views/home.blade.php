@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 datepicker">
             <div id="datepicker"></div>
             <input type="hidden" id="my_hidden_input">
         </div>

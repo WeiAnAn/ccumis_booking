@@ -9,6 +9,10 @@
     height: 80px;
 }
 
+.datepicker{
+    text-align: center;
+}
+
 .custom_footer div {
     text-align: center;
 }
