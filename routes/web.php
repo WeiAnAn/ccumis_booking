@@ -42,6 +42,13 @@ Route::post('/admin/room_update/{id}', 'ClassroomController@update');
 Route::get('/admin/room_record', function () {
     return view('admin.room_record');
 });
+
+Route::get('/user/room_reserve', function () {
+    return view('user.room_reserve');
+});
+Route::get('/user/equipment_reserve', function () {
+    return view('user.equipment_reserve');
+});
 ?>
 
 

@@ -1,5 +1,8 @@
 .custom_adposition{
     width: 195px;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    background: #f7f7f9;
 } 
 
 .custom_adselect{
