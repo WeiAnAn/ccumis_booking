@@ -14,6 +14,10 @@
        
     <ul class="nav navbar-nav navbar-right">
         @if (Auth::check())
+            <li><a href="{{URL('/user')}}">{{Auth::user()->name}}</a></li>
+            @if(Auth::user()->permission == 1)
+            <li><a href="{{URL('/admin/room_manage')}}">管理</a></li>
+            @endif
             <li>
                 <a onclick="document.getElementById('logout_form').submit()" style="cursor:pointer">登出</a>
                 <form id="logout_form" action="{{URL('/logout')}}" method="post">
