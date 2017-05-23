@@ -51,7 +51,7 @@
                     </table>
                 </div> 
                 <div role="tabpanel" class="tab-pane custom_adcontent" id="create">
-                    @include('admin.add_semester')
+                    @include('admin.semester_add')
                 </div>
             </div>
         </div>

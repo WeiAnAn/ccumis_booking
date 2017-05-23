@@ -44,6 +44,12 @@ Route::get('/admin/semester_edit/{id}', 'SemesterController@edit');
 Route::post('/admin/semester_update/{id}', 'SemesterController@update');
 Route::post('/admin/semester_delete/{id}', 'SemesterController@delete');
 
+Route::get('/admin/semester_class_manage', 'SemesterClassController@index');
+Route::post('/admin/semester_class_add', 'SemesterClassController@add');
+Route::get('/admin/semester_class_edit/{id}', 'SemesterClassController@edit');
+Route::post('/admin/semester_class_update/{id}', 'SemesterClassController@update');
+Route::post('/admin/semester_class_delete/{id}', 'SemesterClassController@delete');
+
 
 Route::get('/admin/room_record', function () {
     return view('admin.room_record');
