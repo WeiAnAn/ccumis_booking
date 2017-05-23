@@ -7,13 +7,13 @@
         <a href="{{URL('/admin/room_manage')}}">教室管理</a>
     </li>
     <li>
-        <a href="{{URL('/admin/add_semester')}}">新增學期課程資料</a>
+        <a href="{{URL('/admin/semester_manage')}}">學期資料管理</a>
     </li>
 </ul>
 
 <script>
 $('.nav-pills li').click( function() {
-      $('.nav-pills li').removeClass('active');
+      $('.navpills li').removeClass('active');
       $(this).addClass('active');
 });
 </script>
