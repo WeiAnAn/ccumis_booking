@@ -19,7 +19,7 @@ class ClassroomController extends Controller
         return redirect('/admin/room_manage');
     }
 
-    public function delete(Request $request,$id){
+    public function delete($id){
         Classroom::destroy($id);
         return redirect('/admin/room_manage');
     }
