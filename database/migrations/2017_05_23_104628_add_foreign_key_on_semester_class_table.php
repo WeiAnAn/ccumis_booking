@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSemesterTable extends Migration
+class AddForeignKeyOnSemesterClassTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateSemesterTable extends Migration
      */
     public function up()
     {
-        Schema::create('semesters', function($table){
-            $table->increments('id');
-            $table->unsignedInteger('year');
-            $table->unsignedInteger('semester');
-            $table->timestamps();
+        Schema::table('semester_classes', function($table){
+            $table->foreign('semester_id')->references('id')->on('semesters');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateSemesterTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('semester');
+        Schema::table('semester_classes', function($table){
+            $table->dropForeign('semesters_classes_semester_id_foreign');
+        });
     }
 }
