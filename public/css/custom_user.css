@@ -42,3 +42,19 @@
 .equipLabel{
     margin-right: 30px;
 }
+
+.equipLabelx{
+    padding-left: 10px!important;
+}
+
+.defaultHide{
+    display: none;
+}
+
+.defaultWidth{
+    width: 70px;
+}
+
+.check:checked+.defaultHide{
+    display: block;
+}
