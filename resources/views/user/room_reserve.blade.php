@@ -24,7 +24,7 @@
                 </select>
             
             </div>    
-        </div>
+        </div><!--row of class-->
         
         <div class="usrcontent">選擇時間及教室</div>
         <div class="custom_seperator"></div>
@@ -128,9 +128,111 @@
                     <option>617</option>
                 </select>
             </div>
-                
-        </div><!--end of row-->    
-    </div>
+        </div><!--row of time and classroom-->    
+   
+        <div class="usrcontent">選擇設備</div>
+        <div class="custom_seperator"></div>
+        
+        <div class="row">
+            <div class="col-xs-12 usrclassinfo">
+                <div class="col-xs-2">
+                    <div class="checkbox">
+                        <label class="equipLabel">
+                            <input type="checkbox" value="">
+                            鑰匙
+                        </label>
+                    </div>
+                    <label>x</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-xs-2">
+                    <div class="checkbox">
+                        <label class="equipLabel">
+                            <input type="checkbox" value="">
+                            筆電 
+                        </label>
+                    </div>
+                    <label>x</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-xs-2">
+                    <div class="checkbox">
+                        <label class="equipLabel">
+                            <input type="checkbox" value="">
+                            投影機 
+                        </label>
+                    </div>
+                    <label>x</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-xs-2">
+                    <div class="checkbox">
+                        <label class="equipLabel">
+                            <input type="checkbox" value="">
+                            投影幕
+                        </label>
+                    </div>
+                    <label>x</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-xs-2">
+                    <div class="checkbox">
+                        <label class="equipLabel">
+                            <input type="checkbox" value="">
+                            投影筆
+                        </label>
+                    </div>
+                    <label>x</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div><!-- col-xs-12 -->
+            
+            <div class="col-xs-12 usrclassinfo">
+                <div class="col-xs-2">
+                    <div class="checkbox">
+                        <label class="equipLabel">
+                            <input type="checkbox" value="">
+                            推車 
+                        </label>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="checkbox">
+                        <label class="equipLabel">
+                            <input type="checkbox" value="">
+                            掃把
+                        </label>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="checkbox">
+                        <label class="equipLabel">
+                            <input type="checkbox" value="">
+                            黑金剛
+                        </label>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="checkbox">
+                        <label class="equipLabel">
+                            <input type="checkbox" value="">
+                            海報架
+                        </label>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="checkbox">
+                        <label class="equipLabel">
+                            <input type="checkbox" value="">
+                            其他
+                        </label>
+                    </div>
+                </div>
+            </div><!-- col-xs-12 -->
+
+        </div><!--row of equip-->
+
+    </div><!--end of col-md-8-->
 </div>
 
 <script type="text/javascript">
