@@ -1,4 +1,4 @@
-<form action='{{URL("")}}' method="post">
+<form action='{{URL("/admin/semester_class_add")}}' method="post">
     {{csrf_field()}}
     <div class="form-group">
         <label for="semester_id">學期</label>
@@ -18,6 +18,14 @@
             <option value="3">星期三</option>
             <option value="4">星期四</option>
             <option value="5">星期五</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="classroom">教室</label>
+        <select name="classroom" id="classroom" class="form-control">
+            @foreach($classrooms as $classroom)
+            <option value="{{$classroom->id}}">{{$classroom->name}}</option>
+            @endforeach
         </select>
     </div>
     <div class="form-group">
