@@ -109,12 +109,24 @@
                 <label for="name">課程名稱</label>
                 <input type="text" class="form-control" name="name">
             </div>
+            <div class="form-group">
+                <label for="">教師名稱</label>
+                <input type="text" class="form-control" name="borrower">
+            </div>
+            <button type="submit" class="btn btn-primary">送出</button>
         </form>
     </div>
 </div>
 
 <script>
-    $('#startDate').datepicker();
+    $('#startDate').datepicker({
+        format: "yyyy/mm/dd",
+        autoclose : true
+    });
+    $('#endDate').datepicker({
+        format: "yyyy/mm/dd",
+        autoclose : true
+    });
 </script>
 
 @endsection
