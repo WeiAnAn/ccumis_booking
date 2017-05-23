@@ -12,7 +12,7 @@
                     <strong>{{ $errors->first('username') }}</strong>
                 </p>
                 @endif
-                <input type="text" class="form-control" name="username" id="username" required value="{{old('username9')}}">
+                <input type="text" class="form-control" name="username" id="username" required value="{{old('username')}}">
             </div>
             <div class="form-group">
                 <label for="password">密碼</label>
