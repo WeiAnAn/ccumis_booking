@@ -8,4 +8,6 @@ class Semester extends Model
 {
     //
     protected $fillable = ['year', 'semester', 'start_date', 'end_date'];
-}
+
+
+}  
