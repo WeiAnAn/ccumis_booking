@@ -38,6 +38,13 @@ Route::post('/admin/room_delete/{id}', 'ClassroomController@delete');
 Route::get('/admin/room_edit/{id}', 'ClassroomController@edit');
 Route::post('/admin/room_update/{id}', 'ClassroomController@update');
 
+Route::get('/admin/semester_manage', 'SemesterController@index');
+Route::post('/admin/semester_add', 'SemesterController@add');
+Route::get('/admin/semester_edit/{id}', 'SemesterController@edit');
+Route::post('/admin/semester_update/{id}', 'SemesterController@update');
+Route::post('/admin/semester_delete/{id}', 'SemesterController@delete');
+
+
 Route::get('/admin/room_record', function () {
     return view('admin.room_record');
 });
