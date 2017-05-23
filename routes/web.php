@@ -11,26 +11,25 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 
-Route::get('now', function () {
-        return date("Y-m-d H:i:s");
-});
+// Route::get('now', function () {
+//         return date("Y-m-d H:i:s");
+// });
 
-Route::get('/register', function(){
-        return view('register');
-});
+// Route::get('/register', function(){
+//         return view('register');
+// });
 
-/*for test*/
-Route::get('/login', function() {
-        return view('login');
-})->name('login');
-
-Auth::routes();
+// /*for test*/
+// Route::get('/login', function() {
+//         return view('login');
+// })->name('login');
 
 
+Route::get('/','HomeController@index');
 Route::get('/home', 'HomeController@index');
 
 Route::get('/admin/room_manage', 'ClassroomController@index');
@@ -49,6 +48,8 @@ Route::get('/user/room_reserve', function () {
 Route::get('/user/equipment_reserve', function () {
     return view('user.equipment_reserve');
 });
+
+Auth::routes();
 ?>
 
 
