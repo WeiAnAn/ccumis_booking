@@ -12,7 +12,7 @@
             @endif
             <div class="form-group">
                 <label for="username">學號</label>
-                <input type="text" class="form-control" name="username" id="username" required>
+                <input type="text" class="form-control" name="username" id="username" required autofocus>
             </div>
             <div class="form-group">
                 <label for="password">密碼</label>
