@@ -32,24 +32,26 @@
 Route::get('/','HomeController@index');
 Route::get('/home', 'HomeController@index');
 
-Route::get('/admin/room_manage', 'ClassroomController@index');
-Route::post('/admin/room_add', 'ClassroomController@add');
-Route::post('/admin/room_delete/{id}', 'ClassroomController@delete');
-Route::get('/admin/room_edit/{id}', 'ClassroomController@edit');
-Route::post('/admin/room_update/{id}', 'ClassroomController@update');
+Route::group(['middleware' => 'isAdmin'], function(){
 
-Route::get('/admin/semester_manage', 'SemesterController@index');
-Route::post('/admin/semester_add', 'SemesterController@add');
-Route::get('/admin/semester_edit/{id}', 'SemesterController@edit');
-Route::post('/admin/semester_update/{id}', 'SemesterController@update');
-Route::post('/admin/semester_delete/{id}', 'SemesterController@delete');
+    Route::get('/admin/room_manage', 'ClassroomController@index');
+    Route::post('/admin/room_add', 'ClassroomController@add');
+    Route::post('/admin/room_delete/{id}', 'ClassroomController@delete');
+    Route::get('/admin/room_edit/{id}', 'ClassroomController@edit');
+    Route::post('/admin/room_update/{id}', 'ClassroomController@update');
 
-Route::get('/admin/semester_class_manage', 'SemesterClassController@index');
-Route::post('/admin/semester_class_add', 'SemesterClassController@add');
-Route::get('/admin/semester_class_edit/{id}', 'SemesterClassController@edit');
-Route::post('/admin/semester_class_update/{id}', 'SemesterClassController@update');
-Route::post('/admin/semester_class_delete/{id}', 'SemesterClassController@delete');
+    Route::get('/admin/semester_manage', 'SemesterController@index');
+    Route::post('/admin/semester_add', 'SemesterController@add');
+    Route::get('/admin/semester_edit/{id}', 'SemesterController@edit');
+    Route::post('/admin/semester_update/{id}', 'SemesterController@update');
+    Route::post('/admin/semester_delete/{id}', 'SemesterController@delete');
 
+    Route::get('/admin/semester_class_manage', 'SemesterClassController@index');
+    Route::post('/admin/semester_class_add', 'SemesterClassController@add');
+    Route::get('/admin/semester_class_edit/{id}', 'SemesterClassController@edit');
+    Route::post('/admin/semester_class_update/{id}', 'SemesterClassController@update');
+    Route::post('/admin/semester_class_delete/{id}', 'SemesterClassController@delete');
+});
 
 Route::get('/admin/room_record', function () {
     return view('admin.room_record');
