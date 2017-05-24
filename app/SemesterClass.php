@@ -11,4 +11,9 @@ class SemesterClass extends Model
     public function semester(){
         return $this->hasOne('App\Semester','id', 'semester_id');
     }
+
+    public function classroom(){
+        return $this->hasOne('App\Classroom','id', 'classroom_id');
+    }
+
 }
