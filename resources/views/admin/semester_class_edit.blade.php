@@ -131,7 +131,7 @@
 <script>
     var startTime = "{{$class->start_time}}".split(":");
     var endTime = "{{$class->end_time}}".split(":");
-    $("#semester_id")[0].value = {{$semester->id}};
+    $("#semester_id")[0].value = {{$class->semester->id}};
     $("#day")[0].value = {{$class->day}};
     $("#classroom_id")[0].value = {{$class->classroom->id}};
     $('#startHour')[0].value = startTime[0];

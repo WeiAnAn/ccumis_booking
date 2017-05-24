@@ -73,7 +73,6 @@ class SemesterClassController extends Controller
                 ->delete();
 
             $semester = Semester::find($request->semester_id);
-            dump($semester);
             $addDate = $this->getNearDay($semester->start_date, $request->day);
             $firstDate = strtotime($semester->start_date." +".$addDate." days");
             $endDate = strtotime($semester->end_date);
@@ -84,18 +83,21 @@ class SemesterClassController extends Controller
             $arr['user_id'] = Auth::id();
             $arr['status'] = 2;
             $arr['semester_class_id'] = $id;
-
+            
             for($date = $firstDate;$date<$endDate;$date+=86400*7){
-                dump($arr['date']);
                 $arr['date'] = date("Y-m-d",$date);
                 ClassroomRecord::create($arr);
             }
-            dump($request->all());
-            dump($arr);
-            dump($firstDate);
-            dump($endDate);
+            
         }
-        
+        return redirect('/admin/semester_class_manage');
+    }
+
+    public function delete($id){
+        ClassroomRecord::where('semester_class_id',$id)
+            ->delete();
+        SemesterClass::destroy($id);
+        return redirect('/admin/semester_class_manage');
     }
 
     private function getNearDay($date, $day){
