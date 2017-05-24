@@ -18,27 +18,9 @@
                             <th>時數</th>
                         </tr>
                     </thead>
-                    <tr>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                    </tr>
-                    <tr>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                    </tr>
-                    <tr>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>321</td>
-                        <td>123</td>
-                    </tr>
+                    <tbody id="tbody">
+                        
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -52,10 +34,31 @@
             todayHighlight: true,
         });
         $('#datepicker').on("changeDate", function() {
-            $('#my_hidden_input').val(
-                $('#datepicker').datepicker('getFormattedDate')
-            );
+            // $('#my_hidden_input').val(
+            //     $('#datepicker').datepicker('getFormattedDate')
+            // );
+            $.ajax({
+                url: "api/getClass",
+                data: { date: $('#datepicker').datepicker('getFormattedDate')}
+            }).done(function(json){
+                var data = JSON.parse(json);
+                var content = data.map(function(item){
+                    var row = "";
+                    row = "<tr>";
+                    row+= "<td>"+item.classroom.name+"</td>";
+                    row+= "<td>"+moment(item.start_time,"HH:mm:ss").format("HH:mm")+"~"+moment(item.end_time,"HH:mm:ss").format("HH:mm")+"</td>";
+                    row+= "<td>"+item.name+"</td>";
+                    row+= "<td>"+item.borrower+"</td>";
+                    row+= "<td></td>";
+                    row+= "</tr>";
+                    return row;
+                }).reduce(function(now, next){
+                    return now+next;
+                },"");
+                $('#tbody').html(content);
+            })
         });
         $('#datepicker').datepicker('setDate', moment().format('YYYY-MM-DD'))
+        
     </script>
 @endsection
