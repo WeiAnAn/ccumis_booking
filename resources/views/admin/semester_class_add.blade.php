@@ -22,7 +22,7 @@
     </div>
     <div class="form-group">
         <label for="classroom">教室</label>
-        <select name="classroom" id="classroom" class="form-control">
+        <select name="classroom_id" id="classroom" class="form-control">
             @foreach($classrooms as $classroom)
             <option value="{{$classroom->id}}">{{$classroom->name}}</option>
             @endforeach
@@ -118,14 +118,3 @@
     </div>
     <button type="submit" class="btn btn-primary">送出</button>
 </form>
-
-<script>
-    $('#startDate').datepicker({
-        format: "yyyy/mm/dd",
-        autoclose : true
-    });
-    $('#endDate').datepicker({
-        format: "yyyy/mm/dd",
-        autoclose : true
-    });
-</script>
