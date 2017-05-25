@@ -17,7 +17,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::check())
-                    <li><a href="{{URL('/user')}}">{{Auth::user()->name}}</a></li>
+                    <li><a href="{{URL('/user/room_reserve')}}">{{Auth::user()->name}}</a></li>
                     @if(Auth::user()->permission == 1)
                     <li><a href="{{URL('/admin/room_manage')}}">管理</a></li>
                     @endif

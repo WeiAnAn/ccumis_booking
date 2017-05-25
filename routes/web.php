@@ -63,6 +63,9 @@ Route::get('/user/room_reserve', function () {
 Route::get('/user/equipment_reserve', function () {
     return view('user.equipment_reserve');
 });
+Route::get('/user/review_reserve', function () {
+    return view('user.review_reserve');
+});
 Route::get('/admin/add_semester',function() {
     return view('admin.add_semester');
 });
