@@ -24,6 +24,7 @@
                                 <th>學年度</th>
                                 <th>課程名稱</th>
                                 <th>教室</th>
+                                <th>星期</th>
                                 <th>開始時間</th>
                                 <th>結束時間</th>
                                 <th>上課教師</th>
@@ -39,6 +40,19 @@
                                 </td>
                                 <td>{{$class->name}}</td>
                                 <td>{{$class->classroom->name}}</td>
+                                <td>
+                                    @if($class->day == 1)
+                                        星期一
+                                    @elseif($class->day == 2)
+                                        星期二
+                                    @elseif($class->day == 3)
+                                        星期三
+                                    @elseif($class->day == 4)
+                                        星期四
+                                    @elseif($class->day == 5)
+                                        星期五
+                                    @endif
+                                </td>
                                 <td>{{date('H:i',strtotime($class->start_time))}}</td>
                                 <td>{{date('H:i',strtotime($class->end_time))}}</td>
                                 <td>{{$class->borrower}}</td>
