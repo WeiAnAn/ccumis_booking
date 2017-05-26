@@ -51,15 +51,21 @@ Route::group(['middleware' => 'isAdmin'], function(){
     Route::get('/admin/semester_class_edit/{id}', 'SemesterClassController@edit');
     Route::post('/admin/semester_class_update/{id}', 'SemesterClassController@update');
     Route::post('/admin/semester_class_delete/{id}', 'SemesterClassController@delete');
+
+    Route::get('/admin/room_reserve_manage', 'ClassroomRecordController@showRoomReserve');
+    Route::post('/admin/room_reserve_accept/{id}', 'ClassroomRecordController@acceptRoomReserve');
+    Route::post('/admin/room_reserve_reject/{id}', 'ClassroomRecordController@rejectRoomReserve');
 });
+
 
 Route::get('/admin/room_record', function () {
     return view('admin.room_record');
 });
 
-Route::get('/user/room_reserve', function () {
-    return view('user.room_reserve');
-});
+Route::get('/user/room_reserve', 'ClassroomRecordController@roomReserveIndex');
+Route::post('/user/room_reserve_add', 'ClassroomRecordController@addRoomReserve');
+
+
 Route::get('/user/equipment_reserve', function () {
     return view('user.equipment_reserve');
 });
