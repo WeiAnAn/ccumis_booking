@@ -24,7 +24,7 @@
         <label for="classroom">教室</label>
         <select name="classroom_id" id="classroom" class="form-control">
             @foreach($classrooms as $classroom)
-            <option value="{{$classroom->id}}">{{$classroom->name}}</option>
+            <option value="{{$classroom->id}}">{{$classroom->name." (人數:$classroom->count)"}}</option>
             @endforeach
         </select>
     </div>
