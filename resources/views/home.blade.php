@@ -12,10 +12,10 @@
                     <thead>
                         <tr>
                             <th>教室</th>
-                            <th>時間</th>
+                            <th>開始時間</th>
+                            <th>結束時間</th>
                             <th>課程名稱</th>
                             <th>借用人</th>
-                            <th>時數</th>
                         </tr>
                     </thead>
                     <tbody id="tbody">
@@ -46,10 +46,10 @@
                     var row = "";
                     row = "<tr>";
                     row+= "<td>"+item.classroom.name+"</td>";
-                    row+= "<td>"+moment(item.start_time,"HH:mm:ss").format("HH:mm")+"~"+moment(item.end_time,"HH:mm:ss").format("HH:mm")+"</td>";
+                    row+= "<td>"+moment(item.start_time,"HH:mm:ss").format("HH:mm")+"</td>";
+                    row+= "<td>"+moment(item.end_time,"HH:mm:ss").format("HH:mm")+"</td>";
                     row+= "<td>"+item.name+"</td>";
                     row+= "<td>"+item.borrower+"</td>";
-                    row+= "<td></td>";
                     row+= "</tr>";
                     return row;
                 }).reduce(function(now, next){
