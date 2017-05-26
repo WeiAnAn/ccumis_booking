@@ -24,12 +24,14 @@
 
 <script>
     $('#start_date').datepicker({
-        format: "yyyy/mm/dd",
-        autoclose : true
+        format: "yyyy-mm-dd",
+        autoclose : true,
+        language: 'zh-TW'
     });
     $('#end_date').datepicker({
-        format: "yyyy/mm/dd",
-        autoclose : true
+        format: "yyyy-mm-dd",
+        autoclose : true,
+        language: 'zh-TW'
     });
 
 </script>
