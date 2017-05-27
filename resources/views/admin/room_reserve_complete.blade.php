@@ -6,9 +6,9 @@
         @include('layouts.admin')
     </div> 
     <!-- Tab panes -->
-    <div class="col-md-8">
+    <div class="col-md-9">
         <div class="custom_adnav">
-            <h1 style="margin-top:10px">待審核預約</h1>
+            <h1 style="margin-top:10px">已審核預約</h1>
             <div class="table-responsive">
                 <table class="table table-bordered table-hover">
                     <thead>
@@ -18,7 +18,7 @@
                             <th>時間</th>
                             <th>類型</th>
                             <th>借用人</th>
-                            <th>操作</th>
+                            <th>審核結果</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,36 +31,29 @@
                                 {{date('H:i',strtotime($record->end_time))}}
                             </td>
                             <td>
-                            @if($record->type == 1)
-                                上課
-                            @elseif($record->type == 2)
-                                考試
-                            @elseif($record->type == 3)
-                                會議
-                            @elseif($record->type == 4)
-                                活動
-                            @endif
+                                @if($record->type == 1)
+                                    上課
+                                @elseif($record->type == 2)
+                                    考試
+                                @elseif($record->type == 3)
+                                    會議
+                                @elseif($record->type == 4)
+                                    活動
+                                @endif
                             </td>
                             <td>{{$record->user->name}}</td>
                             <td>
-                                <form style="display:inline-block" action='{{URL("/admin/room_reserve_accept/$record->id")}}' method="post">
-                                    {{csrf_field()}}
-                                    <button class="glyphicon glyphicon-ok delete_btn"  title="同意">
-                                    </button>
-                                </form>
-                                <button class="glyphicon glyphicon-remove delete_btn"  title="拒絕" onclick="showRejectForm()">
-                                    </button>
-                                <form style="display:none" action='{{URL("/admin/room_reserve_reject/$record->id")}}' method="post" id="rejectForm">
-                                    {{csrf_field()}}
-                                    <input type="text" class="form-control" name="reason" placeholder="拒絕原因">
-                                    <button class="btn btn-danger">送出</button>
-                                    <button class="btn btn-primary" onclick="cancel(event)">取消</button>
-                                </form>
+                                @if($record->status == 1)
+                                    通過
+                                @elseif($record->status == -1)
+                                    拒絕,原因:{{$record->reason}}
+                                @endif
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
+                {{$records->links()}}
             </div>
         </div>
     </div>

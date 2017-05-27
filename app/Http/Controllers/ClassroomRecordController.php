@@ -65,4 +65,20 @@ class ClassroomRecordController extends Controller
         $data = compact('records');
         return view('admin.room_reserve_complete',$data);
     }
+
+    function showSelfRoomReserve(){
+        $user = Auth::user();
+        $completedRecords = ClassroomRecord::with('classroom')
+            ->with('user')
+            ->where('status', '1')
+            ->orWhere('status', '-1')
+            ->paginate(10);
+        $activeRecords = ClassroomRecord::with('classroom')
+            ->with('user')
+            ->where('status', '0')
+            ->get();
+
+        $data = compact('completedRecords', 'activeRecords');
+        return view('user.review_reserve', $data);
+    }
 }
