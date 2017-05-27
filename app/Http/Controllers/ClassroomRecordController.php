@@ -12,6 +12,7 @@ class ClassroomRecordController extends Controller
     function api(Request $request){
         $data = ClassroomRecord::with('classroom')
             ->where('date',$request->date)
+            ->where('status','>',0)
             ->get();
         return $data->toJson();
     }
@@ -53,5 +54,15 @@ class ClassroomRecordController extends Controller
         ClassroomRecord::where('id',$id)
             ->update(['status'=>-1,'reason'=>$request->reason]);
         return redirect('/admin/room_reserve_manage');
+    }
+
+    function showCompletedRoomReserve(){
+        $records = ClassroomRecord::with('classroom')
+            ->with('user')
+            ->where('status','1')
+            ->orWhere('status','-1')
+            ->paginate(15);
+        $data = compact('records');
+        return view('admin.room_reserve_complete',$data);
     }
 }
