@@ -3,6 +3,12 @@
     <li role="presentation" class="custom_seperator" >
         <a href="{{URL('/admin/room_record')}}">教室借閱紀錄</a>
     </li>
+    <li class="custom_seperator">
+        <a href="{{URL('/admin/room_reserve_manage')}}">待審核預約</a>
+    </li>
+    <li class="custom_seperator">
+        <a href="{{URL('/admin/room_reserve_completed')}}">已審核預約</a>
+    </li>
     <li role="presentation" class="custom_seperator">
         <a href="{{URL('/admin/room_manage')}}">教室管理</a>
     </li>
