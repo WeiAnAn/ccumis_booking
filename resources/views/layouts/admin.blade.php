@@ -12,6 +12,9 @@
     <li role="presentation" class="custom_seperator">
         <a href="{{URL('/admin/room_manage')}}">教室管理</a>
     </li>
+    <li role="presentation" class="custom_seperator">
+        <a href="{{URL('/admin/equipment_manage')}}">設備管理</a>
+    </li>
     <li class="custom_seperator">
         <a href="{{URL('/admin/semester_manage')}}">學期資料管理</a>
     </li>
