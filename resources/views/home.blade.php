@@ -7,7 +7,7 @@
             <input type="hidden" id="my_hidden_input">
         </div>
         <div class="col-md-9">
-            <div id="booking-table">
+            <div id="booking-table" class="table-responsive">
                 <table class="table table-striped table-bordered table-hover">
                     <thead>
                         <tr>

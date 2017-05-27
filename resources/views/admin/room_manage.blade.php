@@ -18,33 +18,35 @@
             </ul>        
             <div class="tab-content"> 
                 <div role="tabpanel" class="tab-pane custom_adcontent" id="view">
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>教室</th>
-                                <th>容納人數</th>
-                                <th>管理</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($classrooms as $classroom)
-                            <tr>
-                                <td>{{$classroom->name}}</td>
-                                <td>{{$classroom->count}}</td>
-                                <td>
-                                    <a href='{{URL("/admin/room_edit/$classroom->id")}}' title="修改">
-                                        <span class="glyphicon glyphicon-pencil"></span>
-                                    </a>
-                                    <form style="display:inline-block" action='{{URL("/admin/room_delete/$classroom->id")}}' method="post">
-                                        {{csrf_field()}}
-                                        <button class="glyphicon glyphicon-trash delete_btn"  title="刪除">
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>教室</th>
+                                    <th>容納人數</th>
+                                    <th>管理</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($classrooms as $classroom)
+                                <tr>
+                                    <td>{{$classroom->name}}</td>
+                                    <td>{{$classroom->count}}</td>
+                                    <td>
+                                        <a href='{{URL("/admin/room_edit/$classroom->id")}}' title="修改">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </a>
+                                        <form style="display:inline-block" action='{{URL("/admin/room_delete/$classroom->id")}}' method="post">
+                                            {{csrf_field()}}
+                                            <button class="glyphicon glyphicon-trash delete_btn"  title="刪除">
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div> 
                 <div role="tabpanel" class="tab-pane custom_adcontent" id="create">
                     <form action="{{URL('/admin/room_add')}}" method="post">
