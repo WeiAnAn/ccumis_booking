@@ -56,6 +56,13 @@ Route::group(['middleware' => ['isAdmin', 'auth']], function(){
     Route::get('/admin/room_reserve_completed', 'ClassroomRecordController@showCompletedRoomReserve');
     Route::post('/admin/room_reserve_accept/{id}', 'ClassroomRecordController@acceptRoomReserve');
     Route::post('/admin/room_reserve_reject/{id}', 'ClassroomRecordController@rejectRoomReserve');
+
+    Route::get('/admin/equipment_manage', 'EquipmentController@index');
+    Route::post('/admin/equipment_add', 'EquipmentController@add');
+    Route::post('/admin/equipment_delete/{id}', 'EquipmentController@delete');
+    Route::get('/admin/equipment_edit/{id}', 'EquipmentController@edit');
+    Route::post('/admin/equipment_update/{id}', 'EquipmentController@update');
+    
 });
 
 
@@ -65,14 +72,15 @@ Route::get('/admin/room_record', function () {
 
 Route::get('/user/room_reserve', 'ClassroomRecordController@roomReserveIndex');
 Route::post('/user/room_reserve_add', 'ClassroomRecordController@addRoomReserve');
+Route::get('/user/review_reserve', 'ClassroomRecordController@showSelfRoomReserve');
 
+Route::get('/user/equipment_borrow', 'EquipmentRecordController@borrowIndex');
+Route::post('/user/equipment_borrow_add', 'EquipmentRecordController@borrowAdd');
 
 Route::get('/user/equipment_reserve', function () {
     return view('user.equipment_reserve');
 });
-Route::get('/user/review_reserve', function () {
-    return view('user.review_reserve');
-});
+
 Route::get('/admin/add_semester',function() {
     return view('admin.add_semester');
 });
