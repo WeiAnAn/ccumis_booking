@@ -32,7 +32,7 @@
 Route::get('/','HomeController@index');
 Route::get('/home', 'HomeController@index');
 
-Route::group(['middleware' => 'isAdmin'], function(){
+Route::group(['middleware' => ['isAdmin', 'auth']], function(){
 
     Route::get('/admin/room_manage', 'ClassroomController@index');
     Route::post('/admin/room_add', 'ClassroomController@add');
@@ -53,6 +53,7 @@ Route::group(['middleware' => 'isAdmin'], function(){
     Route::post('/admin/semester_class_delete/{id}', 'SemesterClassController@delete');
 
     Route::get('/admin/room_reserve_manage', 'ClassroomRecordController@showRoomReserve');
+    Route::get('/admin/room_reserve_completed', 'ClassroomRecordController@showCompletedRoomReserve');
     Route::post('/admin/room_reserve_accept/{id}', 'ClassroomRecordController@acceptRoomReserve');
     Route::post('/admin/room_reserve_reject/{id}', 'ClassroomRecordController@rejectRoomReserve');
 });
