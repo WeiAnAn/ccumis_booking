@@ -17,6 +17,23 @@ class ClassroomRecordController extends Controller
         return $data->toJson();
     }
 
+    function getBorrowClass(Request $request){
+        $user = Auth::user();
+        $records = ClassroomRecord::with('classroom')
+            ->where('date', $request->date)
+            ->where('status', 2)
+            ->where('borrow_datetime', null)
+            ->orWhere('status', 1)
+            ->where('date', $request->date)
+            ->where('reserve_user_id', $user->id)
+            ->where('borrow_datetime', null)
+            ->get();
+        foreach ($records as $record) {
+            $record['_token'] = csrf_token();
+        }
+        return $records->toJson();
+    }
+
     function roomReserveIndex(){
         $classrooms = Classroom::all();
         $arr = compact('classrooms');
@@ -28,7 +45,7 @@ class ClassroomRecordController extends Controller
         $arr = $request->all();
         $arr['status'] = 0;
         $arr['borrower'] = $user->name;
-        $arr['user_id'] = $user->id;
+        $arr['reserve_user_id'] = $user->id;
         $arr['start_time'] = $request->startHour.":".$request->startMin;
         $arr['end_time'] = $request->endHour.":".$request->endMin;
         ClassroomRecord::create($arr);
@@ -37,7 +54,7 @@ class ClassroomRecordController extends Controller
 
     function showRoomReserve(){
         $records = ClassroomRecord::with('classroom')
-            ->with('user')
+            ->with('reserver')
             ->where('status', 0)
             ->get();
         $data = compact('records');
@@ -58,7 +75,7 @@ class ClassroomRecordController extends Controller
 
     function showCompletedRoomReserve(){
         $records = ClassroomRecord::with('classroom')
-            ->with('user')
+            ->with('reserver')
             ->where('status','1')
             ->orWhere('status','-1')
             ->paginate(15);
@@ -69,16 +86,29 @@ class ClassroomRecordController extends Controller
     function showSelfRoomReserve(){
         $user = Auth::user();
         $completedRecords = ClassroomRecord::with('classroom')
-            ->with('user')
+            ->with('reserver')
             ->where('status', '1')
             ->orWhere('status', '-1')
             ->paginate(10);
         $activeRecords = ClassroomRecord::with('classroom')
-            ->with('user')
+            ->with('reserver')
             ->where('status', '0')
             ->get();
 
         $data = compact('completedRecords', 'activeRecords');
         return view('user.review_reserve', $data);
+    }
+
+    function addBorrow($id){
+        ClassroomRecord::where('id',$id)
+            ->update([
+                'borrow_datetime'=>date("Y-m-d H:i:s"),
+                'borrow_user_id' => Auth::id()    
+            ]);
+        return redirect('/user/not_returned');
+    }
+
+    function showBorrowIndex(){
+        return view('user.room_borrow');
     }
 }
