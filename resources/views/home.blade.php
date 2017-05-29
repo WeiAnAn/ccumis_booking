@@ -34,9 +34,6 @@
             todayHighlight: true,
         });
         $('#datepicker').on("changeDate", function() {
-            // $('#my_hidden_input').val(
-            //     $('#datepicker').datepicker('getFormattedDate')
-            // );
             $.ajax({
                 url: "api/getClass",
                 data: { date: $('#datepicker').datepicker('getFormattedDate')}
