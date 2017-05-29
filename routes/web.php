@@ -35,20 +35,20 @@ Route::get('/home', 'HomeController@index');
 Route::group(['middleware' => ['isAdmin', 'auth']], function(){
 
     Route::get('/admin/room_manage', 'ClassroomController@index');
+    Route::get('/admin/room_edit/{id}', 'ClassroomController@edit');
     Route::post('/admin/room_add', 'ClassroomController@add');
     Route::post('/admin/room_delete/{id}', 'ClassroomController@delete');
-    Route::get('/admin/room_edit/{id}', 'ClassroomController@edit');
     Route::post('/admin/room_update/{id}', 'ClassroomController@update');
 
     Route::get('/admin/semester_manage', 'SemesterController@index');
-    Route::post('/admin/semester_add', 'SemesterController@add');
     Route::get('/admin/semester_edit/{id}', 'SemesterController@edit');
+    Route::post('/admin/semester_add', 'SemesterController@add');
     Route::post('/admin/semester_update/{id}', 'SemesterController@update');
     Route::post('/admin/semester_delete/{id}', 'SemesterController@delete');
 
     Route::get('/admin/semester_class_manage', 'SemesterClassController@index');
-    Route::post('/admin/semester_class_add', 'SemesterClassController@add');
     Route::get('/admin/semester_class_edit/{id}', 'SemesterClassController@edit');
+    Route::post('/admin/semester_class_add', 'SemesterClassController@add');
     Route::post('/admin/semester_class_update/{id}', 'SemesterClassController@update');
     Route::post('/admin/semester_class_delete/{id}', 'SemesterClassController@delete');
 
@@ -58,33 +58,35 @@ Route::group(['middleware' => ['isAdmin', 'auth']], function(){
     Route::post('/admin/room_reserve_reject/{id}', 'ClassroomRecordController@rejectRoomReserve');
 
     Route::get('/admin/equipment_manage', 'EquipmentController@index');
+    Route::get('/admin/equipment_edit/{id}', 'EquipmentController@edit');
     Route::post('/admin/equipment_add', 'EquipmentController@add');
     Route::post('/admin/equipment_delete/{id}', 'EquipmentController@delete');
-    Route::get('/admin/equipment_edit/{id}', 'EquipmentController@edit');
     Route::post('/admin/equipment_update/{id}', 'EquipmentController@update');
     
+    Route::get('/admin/room_record', function () {
+        return view('admin.room_record');
+    });
 });
 
 
-Route::get('/admin/room_record', function () {
-    return view('admin.room_record');
+
+Route::group(['middleware' => 'auth'], function(){
+
+    Route::get('/user/room_reserve', 'ClassroomRecordController@roomReserveIndex');
+    Route::post('/user/room_reserve_add', 'ClassroomRecordController@addRoomReserve');
+    Route::get('/user/review_reserve', 'ClassroomRecordController@showSelfRoomReserve');
+    
+    Route::get('/user/room_borrow', 'ClassroomRecordController@showBorrowIndex');
+    Route::post('/user/room_borrow_add/{id}', 'ClassroomRecordController@addBorrow');
+
+    Route::get('/user/equipment_borrow', 'EquipmentRecordController@showBorrowIndex');
+    Route::post('/user/equipment_borrow_add', 'EquipmentRecordController@addBorrow');
+
+    Route::get('/user/not_returned', 'ReturnController@index');
+    Route::post('/user/return', 'ReturnController@return');
 });
 
-Route::get('/user/room_reserve', 'ClassroomRecordController@roomReserveIndex');
-Route::post('/user/room_reserve_add', 'ClassroomRecordController@addRoomReserve');
-Route::get('/user/review_reserve', 'ClassroomRecordController@showSelfRoomReserve');
-
-Route::get('/user/equipment_borrow', 'EquipmentRecordController@borrowIndex');
-Route::post('/user/equipment_borrow_add', 'EquipmentRecordController@borrowAdd');
-
-Route::get('/user/equipment_reserve', function () {
-    return view('user.equipment_reserve');
-});
-
-Route::get('/admin/add_semester',function() {
-    return view('admin.add_semester');
-});
-
+Route::get('/getBorrowClass',"ClassroomRecordController@getBorrowClass");
 
 Auth::routes();
 ?>
