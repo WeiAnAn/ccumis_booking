@@ -10,4 +10,12 @@ class EquipmentRecord extends Model
         'equipment_id', 'user_id', 'count', 'borrow_datetime',
         'return_datetime',
     ];
+    
+    public function equipment(){
+        return $this->hasOne('App\Equipment', 'id', 'equipment_id');
+    }
+
+    public function user(){
+        return $this->hasOne('App\User', 'id', 'user_id');
+    }
 }
