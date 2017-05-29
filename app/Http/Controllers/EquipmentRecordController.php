@@ -9,16 +9,19 @@ use Auth;
 
 class EquipmentRecordController extends Controller
 {
-    public function borrowIndex(){
+    public function showBorrowIndex(){
         $equipment = Equipment::all();
         $data = compact('equipment');
         return view('user.equipment_borrow', $data);
     }
 
-    public function borrowAdd(Request $request){
+    public function addBorrow(Request $request){
         $arr = $request->all();
         $user = Auth::user();
         foreach($arr['equipment_id'] as $id){
+            $equipment = Equipment::find($id);
+            $equipment->remain = $equipment->remain-(int)$arr['count'];
+            $equipment->save();
             $record = [];
             $record['equipment_id'] = $id;
             $record['count'] = $arr['count'][$id];
