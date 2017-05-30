@@ -86,12 +86,10 @@ class ClassroomRecordController extends Controller
     function showSelfRoomReserve(){
         $user = Auth::user();
         $completedRecords = ClassroomRecord::with('classroom')
-            ->with('reserver')
             ->where('status', '1')
             ->orWhere('status', '-1')
             ->paginate(10);
         $activeRecords = ClassroomRecord::with('classroom')
-            ->with('reserver')
             ->where('status', '0')
             ->get();
 
