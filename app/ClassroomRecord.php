@@ -17,7 +17,7 @@ class ClassroomRecord extends Model
     public function reserver(){
         return $this->hasOne('App\User', 'id', 'reserve_user_id');
     }
-    public function borrower(){
+    public function user(){
         return $this->hasOne('App\User', 'id', 'borrow_user_id');
     }
 }
