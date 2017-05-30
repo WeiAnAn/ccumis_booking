@@ -84,6 +84,9 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/user/not_returned', 'ReturnController@index');
     Route::post('/user/return', 'ReturnController@return');
+
+    Route::get('/user/classroom_history', 'ClassroomRecordController@userHistory');
+    Route::get('/user/equipment_history', 'EquipmentRecordController@userHistory');
 });
 
 Route::get('/getBorrowClass',"ClassroomRecordController@getBorrowClass");
