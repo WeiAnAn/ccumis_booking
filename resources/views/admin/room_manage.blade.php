@@ -8,7 +8,9 @@
     <!-- Tab panes -->
     <div class="col-md-8">
         <div class="custom_adnav">
-           <ul class="nav nav-tabs" id="roomManage" role="tablist">
+            <div class="usrcontent">教室管理</div>
+            <div class="custom_seperator"></div></br>
+            <ul class="nav nav-tabs" id="roomManage" role="tablist">
                 <li role="presentation">
                     <a href="#view" aria-controls="view" role="tab" data-toggle="tab">檢視</a>
                 </li>

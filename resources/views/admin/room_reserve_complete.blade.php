@@ -8,7 +8,8 @@
     <!-- Tab panes -->
     <div class="col-md-9">
         <div class="custom_adnav">
-            <h1 style="margin-top:10px">已審核預約</h1>
+            <div class="usrcontent">已審核預約</div>
+            <div class="custom_seperator"></div></br>
             <div class="table-responsive">
                 <table class="table table-bordered table-hover">
                     <thead>
