@@ -29,7 +29,7 @@ class EquipmentRecordController extends Controller
             $record['borrow_datetime'] = date("Y-m-d H:i:s");
             EquipmentRecord::create($record);
         }
-        return redirect('user/equipment_borrow');
+        return redirect('user/not_returned');
     }
 
     public function userHistory(){
