@@ -12,14 +12,16 @@
         </div><!-- /.navbar-header -->
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
+                <li><a href="{{URL('/user/room_borrow')}}">教室借用</a></li>
+                <li><a href="{{URL('/user/equipment_borrow')}}">設備借用</a></li>
                 <li><a href="{{URL('/search')}}">教室查詢</a></li>
                 <li><a href="{{URL('/rule')}}">使用規範</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::check())
-                    <li><a href="{{URL('/user/room_reserve')}}">{{Auth::user()->name}}</a></li>
+                    <li><a href="{{URL('/user')}}">{{Auth::user()->name}}</a></li>
                     @if(Auth::user()->permission == 1)
-                    <li><a href="{{URL('/admin/room_manage')}}">管理</a></li>
+                    <li><a href="{{URL('/admin')}}">管理</a></li>
                     @endif
                     <li>
                         <a onclick="document.getElementById('logout_form').submit()" style="cursor:pointer">登出</a>
