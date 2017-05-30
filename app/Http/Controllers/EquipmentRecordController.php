@@ -31,4 +31,13 @@ class EquipmentRecordController extends Controller
         }
         return redirect('user/equipment_borrow');
     }
+
+    public function userHistory(){
+        $equipment = EquipmentRecord::with('equipment')
+            ->where('user_id', Auth::id())
+            ->whereNotNull('return_datetime')
+            ->paginate(15);
+        $data = compact('equipment');
+        return view('user.equipment_history', $data);
+    }
 }
