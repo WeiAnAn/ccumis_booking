@@ -35,7 +35,7 @@
         });
         $('#datepicker').on("changeDate", function() {
             $.ajax({
-                url: "api/getClass",
+                url: "{{URL('/api/getClass')}}",
                 data: { date: $('#datepicker').datepicker('getFormattedDate')}
             }).done(function(json){
                 var data = JSON.parse(json);
