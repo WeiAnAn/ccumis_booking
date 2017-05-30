@@ -1,6 +1,9 @@
 <!-- Nav -->
 <ul class="nav nav-pills nav-stacked custom_adposition">
     <li class="custom_seperator">
+        <a href="{{URL('/admin/not_returned')}}">未歸還設備教室</a>
+    </li>
+    <li class="custom_seperator">
         <a href="{{URL('/admin/room_reserve_manage')}}">待審核預約</a>
     </li>
     <li class="custom_seperator">

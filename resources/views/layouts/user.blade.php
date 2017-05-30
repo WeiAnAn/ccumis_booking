@@ -1,7 +1,7 @@
 <!-- Nav -->
 <ul class="nav nav-pills nav-stacked custom_adposition">
     <li class="custom_seperator">
-        <a href="{{URL('/user/not_returned')}}">尚未歸還教室與設備</a>
+        <a href="{{URL('/user/not_returned')}}">歸還教室與設備</a>
     </li>
     <li class="custom_seperator">
         <a href="{{URL('/user/room_borrow')}}">教室借用</a>
