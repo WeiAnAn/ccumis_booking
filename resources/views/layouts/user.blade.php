@@ -15,6 +15,12 @@
     <li role="presentation" class="custom_seperator">
         <a href="{{URL('/user/review_reserve')}}">審核中預約</a>
     </li>
+    <li class="custom_seperator">
+        <a href="{{URL('/user/classroom_history')}}">教室借用歷史紀錄</a>
+    </li>
+    <li class="custom_seperator">
+        <a href="{{URL('/user/equipment_history')}}">設備借用歷史紀錄</a>
+    </li>
 </ul>
 
 <script>
