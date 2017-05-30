@@ -42,3 +42,18 @@
     display: inline-block;
     color: #337ab7;
 }
+
+.card{
+    height: 220px
+}
+
+.card_title{
+    margin-top:0;
+}
+
+.card_button{
+   /*float: right;*/
+   position: absolute;
+   bottom: 30px;
+   right: 30px;
+}
