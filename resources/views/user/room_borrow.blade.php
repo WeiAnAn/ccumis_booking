@@ -46,6 +46,9 @@
             data: { date: $('#datepicker').datepicker('getFormattedDate')}
         }).done(function(json){
             var data = JSON.parse(json);
+            var url = document.URL;
+            url = url.substr(0, url.indexOf('user'));
+            console.log(url);
             var content = data.map(function(item){
                 var row = "";
                 row = "<tr>";
@@ -55,7 +58,7 @@
                 row+= "<td>"+item.name+"</td>";
                 row+= "<td>"+item.borrower+"</td>";
                 row+= "<td>";
-                row+= "<form action='/user/room_borrow_add/"+item.id+"' method='post'>";
+                row+= "<form action='"+url+"user/room_borrow_add/"+item.id+"' method='post'>";
                 row+= '<input type="text" name="_token" value="'+item._token+'" hidden/>';
                 row+= '<button class="btn btn-primary">借用</button>';
                 row+= '</form>';
