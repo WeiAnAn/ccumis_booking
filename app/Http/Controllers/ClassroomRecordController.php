@@ -111,4 +111,13 @@ class ClassroomRecordController extends Controller
     function showBorrowIndex(){
         return view('user.room_borrow');
     }
+
+    function userHistory(){
+        $records = ClassroomRecord::with('classroom')
+            ->where('borrow_user_id', Auth::id())
+            ->whereNotNull('return_datetime')
+            ->paginate(15);
+        $data = compact('records');
+        return view('user.classroom_history', $data);
+    }
 }
