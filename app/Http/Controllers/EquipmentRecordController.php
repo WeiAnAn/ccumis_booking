@@ -40,4 +40,14 @@ class EquipmentRecordController extends Controller
         $data = compact('equipment');
         return view('user.equipment_history', $data);
     }
+
+    public function adminHistory(){
+        $equipment = EquipmentRecord::with('equipment')
+            ->with('user')
+            ->where('user_id', Auth::id())
+            ->whereNotNull('return_datetime')
+            ->paginate(15);
+        $data = compact('equipment');
+        return view('admin.equipment_history', $data);
+    }
 }

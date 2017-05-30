@@ -120,4 +120,13 @@ class ClassroomRecordController extends Controller
         $data = compact('records');
         return view('user.classroom_history', $data);
     }
+
+    function adminHistory(){
+        $records = ClassroomRecord::with('classroom')
+            ->with('user')
+            ->whereNotNull('return_datetime')
+            ->paginate(15);
+        $data = compact('records');
+        return view('admin.classroom_history', $data);
+    }
 }
