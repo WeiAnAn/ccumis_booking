@@ -30,7 +30,7 @@ class SemesterClassController extends Controller
         $arr = $request->all();
         $arr['start_time'] = $request->startHour.":".$request->startMin;
         $arr['end_time'] = $request->endHour.":".$request->endMin;
-        $arr['reserv_user_id'] = Auth::id();
+        $arr['reserve_user_id'] = Auth::id();
         $arr['status'] = 2;
         $semesterClass = SemesterClass::create($arr);
         $arr['semester_class_id'] = $semesterClass->id;
