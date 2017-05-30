@@ -62,10 +62,12 @@ Route::group(['middleware' => ['isAdmin', 'auth']], function(){
     Route::post('/admin/equipment_add', 'EquipmentController@add');
     Route::post('/admin/equipment_delete/{id}', 'EquipmentController@delete');
     Route::post('/admin/equipment_update/{id}', 'EquipmentController@update');
+
+    Route::get('/admin/not_returned', 'ReturnController@adminIndex');
+    Route::post('/admin/return', 'ReturnController@adminReturn');
     
-    Route::get('/admin/room_record', function () {
-        return view('admin.room_record');
-    });
+    Route::get('/admin/classroom_history', 'ClassroomRecordController@adminHistory');
+    Route::get('/admin/equipment_history', 'EquipmentRecordController@adminHistory');
 });
 
 
@@ -87,9 +89,9 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/user/classroom_history', 'ClassroomRecordController@userHistory');
     Route::get('/user/equipment_history', 'EquipmentRecordController@userHistory');
+    Route::get('/getBorrowClass',"ClassroomRecordController@getBorrowClass");
 });
 
-Route::get('/getBorrowClass',"ClassroomRecordController@getBorrowClass");
 
 Auth::routes();
 ?>
