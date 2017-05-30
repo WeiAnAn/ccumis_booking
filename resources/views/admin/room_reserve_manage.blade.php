@@ -41,7 +41,7 @@
                                 活動
                             @endif
                             </td>
-                            <td>{{$record->user->name}}</td>
+                            <td>{{$record->reserver->name}}</td>
                             <td>
                                 <form style="display:inline-block" action='{{URL("/admin/room_reserve_accept/$record->id")}}' method="post">
                                     {{csrf_field()}}

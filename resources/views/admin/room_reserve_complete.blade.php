@@ -41,7 +41,7 @@
                                     活動
                                 @endif
                             </td>
-                            <td>{{$record->user->name}}</td>
+                            <td>{{$record->reserver->name}}</td>
                             <td>
                                 @if($record->status == 1)
                                     通過
