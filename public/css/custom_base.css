@@ -56,3 +56,17 @@ html, body{
         margin-right: 40px;
     }
 }
+
+.mobile_block{
+    display: block;
+    padding:0;
+}
+
+@media (min-width: 768px){
+    .mobile_block{
+        display: inline-block;
+        width: auto;
+        padding:0;
+    }
+}
+

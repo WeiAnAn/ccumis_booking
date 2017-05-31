@@ -5,7 +5,7 @@
 }
 
 .usrclassinfo{
-    margin: 20px 0;  
+    margin: 0 0 20px 0;  
 }
 
 .usrlabel{
@@ -32,7 +32,9 @@
 }
 
 .usrspan{
-    margin: 0 5px;
+    margin: 5px 5px;
+    display: inline-block;
+    float:left;
 }
 
 .form-inline{

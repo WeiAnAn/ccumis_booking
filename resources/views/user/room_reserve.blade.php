@@ -13,7 +13,7 @@
                 <div class="custom_seperator"></div>
                 
                 <div class="row">
-                    <div class="col-xs-4 usrclassinfo">
+                    <div class="col-xs-12 usrclassinfo">
                         <label class="usrlabel">課程名稱</label>
                         <input type="text" class="form-control" name="name">
                         
@@ -32,7 +32,7 @@
                 <div class="custom_seperator"></div>
         
                 <div class="row">
-                    <div class="col-xs-4 usrclassinfo">
+                    <div class="col-xs-12 col-lg-6 usrclassinfo">
                         <label class="usrlabel">日期</label>
                         <div class='input-group' >
                             <input type="text" class="form-control datepicker" id="datepicker1" name="date" >
@@ -41,87 +41,92 @@
                             </span>
                         </div>
                         
-                        <label class="usrlabel">時間</label>
-                        <div class="controls form-inline">
-                            <div class="input-append">
-                                <select class="usrselect" name="startHour">
-                                    <option value="08">08</option>
-                                    <option value="09">09</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                    <option value="13">13</option>
-                                    <option value="14">14</option>
-                                    <option value="15">15</option>
-                                    <option value="16">16</option>
-                                    <option value="17">17</option>
-                                    <option value="18">18</option>
-                                    <option value="19">19</option>
-                                    <option value="20">20</option>
-                                    <option value="21">21</option>
-                                    <option value="22">22</option>
-                                </select>
-                                <span class="usradd-on">點</span>
+                        <label class="usrlabel ">時間</label>
+                        <div class="input-group">
+                            <div class="col-xs-12 mobile_block">
+                                <div class="input-append">
+                                    <select class="usrselect" name="startHour">
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                    </select>
+                                    <span class="usradd-on">點</span>
+                                </div>
+                                <div class="input-append">
+                                    <select class="usrselect" name="startMin">
+                                        <option value="00">00</option>
+                                        <option value="05">05</option>
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option value="20">20</option>
+                                        <option value="25">25</option>
+                                        <option value="30">30</option>
+                                        <option value="35">35</option>
+                                        <option value="40">40</option>
+                                        <option value="45">45</option>
+                                        <option value="50">50</option>
+                                        <option value="55">55</option>
+                                    </select>
+                                    <span class="usradd-on">分</span>
+                                </div>
                             </div>
-                            <div class="input-append">
-                                <select class="usrselect" name="startMin">
-                                    <option value="00">00</option>
-                                    <option value="05">05</option>
-                                    <option value="10">10</option>
-                                    <option value="15">15</option>
-                                    <option value="20">20</option>
-                                    <option value="25">25</option>
-                                    <option value="30">30</option>
-                                    <option value="35">35</option>
-                                    <option value="40">40</option>
-                                    <option value="45">45</option>
-                                    <option value="50">50</option>
-                                    <option value="55">55</option>
-                                </select>
-                                <span class="usradd-on">分</span>
-                            </div>
-                            <span class="usrspan">~</span>    
-                            <div class="input-append">
-                                <select class="usrselect" name="endHour">
-                                    <option value="08">08</option>
-                                    <option value="09">09</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                    <option value="13">13</option>
-                                    <option value="14">14</option>
-                                    <option value="15">15</option>
-                                    <option value="16">16</option>
-                                    <option value="17">17</option>
-                                    <option value="18">18</option>
-                                    <option value="19">19</option>
-                                    <option value="20">20</option>
-                                    <option value="21">21</option>
-                                    <option value="22">22</option>
-                                </select>
-                                <span class="usradd-on">點</span>
-                            </div>
-                            <div class="input-append">
-                                <select class="usrselect" name="endMin">
-                                    <option value="00">00</option>
-                                    <option value="05">05</option>
-                                    <option value="10">10</option>
-                                    <option value="15">15</option>
-                                    <option value="20">20</option>
-                                    <option value="25">25</option>
-                                    <option value="30">30</option>
-                                    <option value="35">35</option>
-                                    <option value="40">40</option>
-                                    <option value="45">45</option>
-                                    <option value="50">50</option>
-                                    <option value="55">55</option>
-                                </select>
-                                <span class="usradd-on">分</span>
+                            <span class="usrspan mobile_block hidden-xs">~</span>
+                            <span class="usrspan mobile_block visible-xs">到</span>
+                            <div class="col-xs-12 mobile_block">   
+                                <div class="input-append">
+                                    <select class="usrselect" name="endHour">
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                    </select>
+                                    <span class="usradd-on">點</span>
+                                </div>
+                                <div class="input-append">
+                                    <select class="usrselect" name="endMin">
+                                        <option value="00">00</option>
+                                        <option value="05">05</option>
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option value="20">20</option>
+                                        <option value="25">25</option>
+                                        <option value="30">30</option>
+                                        <option value="35">35</option>
+                                        <option value="40">40</option>
+                                        <option value="45">45</option>
+                                        <option value="50">50</option>
+                                        <option value="55">55</option>
+                                    </select>
+                                    <span class="usradd-on">分</span>
+                                </div>
                             </div>
                         </div>
                     
                     </div>
-                    <div class="col-xs-3 usrclassinfo">
+                    <div class="col-xs-12 col-lg-6 usrclassinfo">
                         <label class="usrlabel">教室</label>
                         <select class="form-control" name="classroom_id">
                             @foreach($classrooms as $classroom)
