@@ -15,20 +15,20 @@
 .usrselect{
     width: 50px;
     background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 3px;
     height: 30px;
+    border: 0;
 }
 
 .usradd-on{
     margin-left: -5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+    border: 0px;
     padding: 6px;
 }
 
 .input-append{
     display: inline-block;
+    border: 2px solid #ccc;
+    border-radius: 3px;
 }
 
 .usrspan{
