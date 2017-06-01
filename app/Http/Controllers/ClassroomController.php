@@ -10,11 +10,14 @@ class ClassroomController extends Controller
     //
     public function index(){
         $classrooms = Classroom::all();
-
         return view('admin.room_manage',['classrooms'=>$classrooms]);
     }
 
     public function add(Request $request){
+        $this->validate($request, [
+            'name' => 'required|max:191',
+            'count' => 'required'
+        ]);
         Classroom::create($request->all());
         return redirect('/admin/room_manage');
     }
@@ -30,6 +33,10 @@ class ClassroomController extends Controller
     }
 
     public function update(Request $request, $id){
+        $this->validate($request, [
+            'name' => 'required|max:191',
+            'count' => 'required'
+        ]);
         Classroom::where('id',$id)
             ->update($request->except('_token'));
         return redirect('/admin/room_manage');

@@ -55,11 +55,17 @@
                         {{csrf_field()}}
                         <div class="form-group">
                             <label for="equipmentName">設備名稱</label>
-                            <input type="text" class="form-control" id="equipmentName"  name="name" required>
+                            @if($errors->has('name'))
+                            <p class="text-danger"><strong>{{$errors->first('name')}}</strong></p>
+                            @endif
+                            <input type="text" class="form-control" id="equipmentName"  name="name" value="{{old('name')}}" required>
                         </div>
                         <div class="form-group">
                             <label for="number">數量</label>
-                            <input type="number" min="1" class="form-control" id="number" name="count" required>
+                            @if($errors->has('count'))
+                            <p class="text-danger"><strong>{{$errors->first('count')}}</strong></p>
+                            @endif
+                            <input type="number" min="1" class="form-control" id="number" name="count" value="{{old('count')}}" required>
                         </div>
                         <button type="submit" class="btn btn-primary">新增</button>
                     </form>
@@ -71,7 +77,7 @@
 
 <script>
   $(function () {
-          $('#roomManage a:first').tab('show')
+          $('#roomManage a[href="#{{count($errors)>0?"create":"view"}}"]').tab('show')
             })
 </script>
 @endsection

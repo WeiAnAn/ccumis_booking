@@ -55,11 +55,17 @@
                         {{csrf_field()}}
                         <div class="form-group">
                             <label for="roomName">教室名稱</label>
-                            <input type="text" class="form-control" id="roomName"  name="name" placeholder="room" required>
+                            @if($errors->has('name'))
+                            <p class="text-danger"><strong>{{$errors->first('name')}}</strong></p>
+                            @endif
+                            <input type="text" class="form-control" id="roomName"  name="name" placeholder="room" value="{{old('name')}}" required>
                         </div>
                         <div class="form-group">
                             <label for="numberOfpeople">容納人數</label>
-                            <input type="text" class="form-control" id="numberOfpeople" name="count" placeholder="people" required>
+                            @if($errors->has('count'))
+                            <p class="text-danger"><strong>{{$errors->first('count')}}</strong></p>
+                            @endif
+                            <input type="number" class="form-control" id="numberOfpeople" name="count" placeholder="people" value ="{{old('count')}}" required>
                         </div>
                         <button type="submit" class="btn btn-primary">新增</button>
                     </form>
@@ -70,8 +76,8 @@
 </div>
 
 <script>
-  $(function () {
-          $('#roomManage a:first').tab('show')
-            })
+    $(function () {
+        $('#roomManage a[href="#{{count($errors)>0?"create":"view"}}"]').tab('show')
+    })
 </script>
 @endsection
