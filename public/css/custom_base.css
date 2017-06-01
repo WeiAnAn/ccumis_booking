@@ -3,10 +3,23 @@
     color: white;
     width: 100%;
     padding-bottom: 30px;
-    padding-top: 30px;
+    padding-top: 20px;
     position: absolute;
     bottom: 0;
     height: 80px;
+}
+
+@media (min-width:768px){
+    .custom_footer {
+        background-color: rgb(42, 39, 48);
+        color: white;
+        width: 100%;
+        padding-bottom: 30px;
+        padding-top: 30px;
+        position: absolute;
+        bottom: 0;
+        height: 80px;
+    }
 }
 
 .datepicker{
