@@ -11,11 +11,11 @@
             {{csrf_field()}}
             <div class="form-group">
                 <label for="roomName">教室名稱</label>
-                <input type="text" class="form-control" id="roomName"  name="name" placeholder="room" value="{{$classroom->name}}">
+                <input type="text" class="form-control" id="roomName"  name="name" placeholder="room" value="{{$classroom->name}}" required>
             </div>
             <div class="form-group">
                 <label for="numberOfpeople">容納人數</label>
-                <input type="text" class="form-control" id="numberOfpeople" name="count" placeholder="people" value="{{$classroom->count}}">
+                <input type="text" class="form-control" id="numberOfpeople" name="count" placeholder="people" value="{{$classroom->count}}" required>
             </div>
             <button type="submit" class="btn btn-primary">更新</button>
         </form>

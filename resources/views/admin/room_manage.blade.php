@@ -55,11 +55,11 @@
                         {{csrf_field()}}
                         <div class="form-group">
                             <label for="roomName">教室名稱</label>
-                            <input type="text" class="form-control" id="roomName"  name="name" placeholder="room">
+                            <input type="text" class="form-control" id="roomName"  name="name" placeholder="room" required>
                         </div>
                         <div class="form-group">
                             <label for="numberOfpeople">容納人數</label>
-                            <input type="text" class="form-control" id="numberOfpeople" name="count" placeholder="people">
+                            <input type="text" class="form-control" id="numberOfpeople" name="count" placeholder="people" required>
                         </div>
                         <button type="submit" class="btn btn-primary">新增</button>
                     </form>
