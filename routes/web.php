@@ -93,7 +93,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/user/equipment_borrow_add', 'EquipmentRecordController@addBorrow');
 
     Route::get('/user/not_returned', 'ReturnController@index');
-    Route::post('/user/return', 'ReturnController@return');
+    Route::post('/user/return', 'ReturnController@doReturn');
 
     Route::get('/user/classroom_history', 'ClassroomRecordController@userHistory');
     Route::get('/user/equipment_history', 'EquipmentRecordController@userHistory');
