@@ -11,7 +11,7 @@
             <div class="usrcontent">學期課程管理</div>
             <div class="custom_seperator"></div></br>
             <ul class="nav nav-tabs" id="roomManage" role="tablist">
-                <li role="presentation" class="active">
+                <li role="presentation">
                     <a href="#view" aria-controls="view" role="tab" data-toggle="tab">檢視</a>
                 </li>
                 <li role="presentation">
@@ -19,7 +19,7 @@
                 </li>
             </ul>        
             <div class="tab-content"> 
-                <div role="tabpanel" class="tab-pane custom_adcontent active" id="view">
+                <div role="tabpanel" class="tab-pane custom_adcontent" id="view">
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
                             <thead>
@@ -82,5 +82,18 @@
         </div>
     </div>
 </div>
-
+<script>
+    $(function () {
+        $('#roomManage a[href="#{{count($errors)>0?"create":"view"}}"]').tab('show')
+    })
+    @if(count($errors)>0)
+    $('#startHour')[0].value ="{{old('startHour')}}";
+    $('#startMin')[0].value ="{{old('startMin')}}";
+    $('#endHour')[0].value ="{{old('endHour')}}";
+    $('#endMin')[0].value ="{{old('endMin')}}";
+    $('#classroom_id')[0].value ="{{old('classroom_id')}}";
+    $('#day')[0].value = "{{old('day')}}";
+    $('#semester_id')[0].value = "{{old('semester_id')}}";
+    @endif
+</script>
 @endsection

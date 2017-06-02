@@ -16,7 +16,7 @@ class EquipmentController extends Controller
     public function add(Request $request){
         $this->validate($request, [
             'name' => 'required|max:191',
-            'count' => 'required'
+            'count' => 'required|min:1|integer'
         ]);
         $arr = $request->all();
         $arr['total'] = $arr['count'];
@@ -38,7 +38,7 @@ class EquipmentController extends Controller
     public function update($id, Request $request){
         $this->validate($request, [
             'name' => 'required|max:191',
-            'count' => 'required'
+            'count' => 'required|min:1|integer'
         ]);
         $old = Equipment::find($id);
         $arr = $request->all();

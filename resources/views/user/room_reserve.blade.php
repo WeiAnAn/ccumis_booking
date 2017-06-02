@@ -15,10 +15,13 @@
                 <div class="row">
                     <div class="col-xs-12 usrclassinfo">
                         <label class="usrlabel">課程名稱</label>
-                        <input type="text" class="form-control" name="name">
+                        @if($errors->has('name'))
+                        <p class="text-danger"><strong>{{$errors->first('name')}}</strong></p>
+                        @endif
+                        <input type="text" class="form-control" name="name" id="name" value="{{old('name')}}" required>
                         
                         <label class="usrlabel">事由</label>
-                        <select class="form-control" name="type">
+                        <select class="form-control" name="type" id="type">
                             <option value="1">上課</option>
                             <option value="2">考試</option>
                             <option value="3">會議</option>
@@ -34,18 +37,24 @@
                 <div class="row">
                     <div class="col-xs-12 col-lg-6 usrclassinfo">
                         <label class="usrlabel">日期</label>
+                        @if($errors->has('date'))
+                        <p class="text-danger"><strong>{{$errors->first('date')}}</strong></p>
+                        @endif
                         <div class='input-group' >
-                            <input type="text" class="form-control datepicker" id="datepicker1" name="date" >
+                            <input type="text" class="form-control datepicker" id="datepicker1" name="date" required>
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
                         </div>
                         
                         <label class="usrlabel ">時間</label>
+                        @if($errors->has('time'))
+                        <p class="text-danger"><strong>{{$errors->first('time')}}</strong></p>
+                        @endif
                         <div class="input-group">
                             <div class="col-xs-12 mobile_block">
                                 <div class="input-append">
-                                    <select class="usrselect" name="startHour">
+                                    <select class="usrselect" name="startHour" id="startHour">
                                         <option value="08">08</option>
                                         <option value="09">09</option>
                                         <option value="10">10</option>
@@ -65,7 +74,7 @@
                                     <span class="usradd-on">點</span>
                                 </div>
                                 <div class="input-append">
-                                    <select class="usrselect" name="startMin">
+                                    <select class="usrselect" name="startMin" id="startMin">
                                         <option value="00">00</option>
                                         <option value="05">05</option>
                                         <option value="10">10</option>
@@ -86,7 +95,7 @@
                             <span class="usrspan mobile_block visible-xs">到</span>
                             <div class="col-xs-12 mobile_block">   
                                 <div class="input-append">
-                                    <select class="usrselect" name="endHour">
+                                    <select class="usrselect" name="endHour" id="endHour">
                                         <option value="08">08</option>
                                         <option value="09">09</option>
                                         <option value="10">10</option>
@@ -106,7 +115,7 @@
                                     <span class="usradd-on">點</span>
                                 </div>
                                 <div class="input-append">
-                                    <select class="usrselect" name="endMin">
+                                    <select class="usrselect" name="endMin" id="endMin">
                                         <option value="00">00</option>
                                         <option value="05">05</option>
                                         <option value="10">10</option>
@@ -128,7 +137,7 @@
                     </div>
                     <div class="col-xs-12 col-lg-6 usrclassinfo">
                         <label class="usrlabel">教室</label>
-                        <select class="form-control" name="classroom_id">
+                        <select class="form-control" name="classroom_id" id="classroom_id">
                             @foreach($classrooms as $classroom)
                             <option value="{{$classroom->id}}">{{$classroom->name." (人數:$classroom->count)"}}</option>
                             @endforeach
@@ -147,6 +156,15 @@ $('#datepicker1').datepicker({
     language: "zh-TW",
     autoclose: true
 });
+@if(count($errors)>0)
+    $('#type')[0].value ="{{old('type')}}";
+    $('#startHour')[0].value ="{{old('startHour')}}";
+    $('#startMin')[0].value ="{{old('startMin')}}";
+    $('#endHour')[0].value ="{{old('endHour')}}";
+    $('#endMin')[0].value ="{{old('endMin')}}";
+    $('#classroom_id')[0].value ="{{old('classroom_id')}}";
+    $('#datepicker1').datepicker('setDate', "{{old('date')}}");
+@endif
 </script>
 
 @endsection    

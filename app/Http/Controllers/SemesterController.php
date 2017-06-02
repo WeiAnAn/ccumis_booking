@@ -15,6 +15,12 @@ class SemesterController extends Controller
     }
 
     public function add(Request $request){
+        $this->validate($request, [
+            'year' => 'required|integer',
+            'semester' => 'required|integer',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+        ]);
         Semester::create($request->all());
         return redirect('/admin/semester_manage');
     }
@@ -25,6 +31,12 @@ class SemesterController extends Controller
     }
 
     public function update(Request $request,$id){
+        $this->validate($request, [
+            'year' => 'required|integer',
+            'semester' => 'required|integer',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+        ]);
         Semester::where('id',$id)
             ->update($request->except('_token'));
         return redirect('/admin/semester_manage');

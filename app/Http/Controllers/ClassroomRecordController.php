@@ -6,10 +6,11 @@ use Illuminate\Http\Request;
 use App\ClassroomRecord;
 use App\Classroom;
 use Auth;
+use Validator;
 
 class ClassroomRecordController extends Controller
 {
-    function api(Request $request){
+    public function api(Request $request){
         $data = ClassroomRecord::with('classroom')
             ->where('date',$request->date)
             ->where('status','>',0)
@@ -17,7 +18,7 @@ class ClassroomRecordController extends Controller
         return $data->toJson();
     }
 
-    function getBorrowClass(Request $request){
+    public function getBorrowClass(Request $request){
         $user = Auth::user();
         $records = ClassroomRecord::with('classroom')
             ->where('date', $request->date)
@@ -34,13 +35,25 @@ class ClassroomRecordController extends Controller
         return $records->toJson();
     }
 
-    function roomReserveIndex(){
+    public function roomReserveIndex(){
         $classrooms = Classroom::all();
         $arr = compact('classrooms');
         return view('user.room_reserve',$arr);
     }
 
-    function addRoomReserve(Request $request){
+    public function addRoomReserve(Request $request){
+        $rule = [
+            'name' => 'required|max:191',
+            'type' => 'required',
+            'date' => 'required|max:191|date',
+            'classroom_id' => 'required',
+            'startHour' => 'required',
+            'startMin' => 'required',
+            'endHour' => 'required',
+            'endMin' => 'required',
+        ];
+        $validator = Validator::make($request->all(), $rule);
+
         $user = Auth::user();
         $arr = $request->all();
         $arr['status'] = 0;
@@ -48,11 +61,22 @@ class ClassroomRecordController extends Controller
         $arr['reserve_user_id'] = $user->id;
         $arr['start_time'] = $request->startHour.":".$request->startMin;
         $arr['end_time'] = $request->endHour.":".$request->endMin;
+
+        $validator->after(function($validator) use($arr){
+            if($this->isAlreadyReserve($arr))
+                $validator->errors()->add('time', '此時段已有借用紀錄');
+            if($arr['start_time']>$arr['end_time'])
+                $validator->errors()->add('time', '開始時間需在結束時間之前');
+        });
+
+        if($validator->fails())
+            return redirect('/user/room_reserve')->withErrors($validator)->withInput();
+       
         ClassroomRecord::create($arr);
-        return redirect('/user/room_reserve');
+        return redirect('/user/review_reserve');
     }
 
-    function showRoomReserve(){
+    public function showRoomReserve(){
         $records = ClassroomRecord::with('classroom')
             ->with('reserver')
             ->where('status', 0)
@@ -61,19 +85,19 @@ class ClassroomRecordController extends Controller
         return view('/admin/room_reserve_manage', $data);
     }
 
-    function acceptRoomReserve($id){
+    public function acceptRoomReserve($id){
         ClassroomRecord::where('id',$id)
             ->update(['status'=>1]);
             
         return redirect('/admin/room_reserve_manage');
     }
-    function rejectRoomReserve($id,Request $request){
+    public function rejectRoomReserve($id,Request $request){
         ClassroomRecord::where('id',$id)
             ->update(['status'=>-1,'reason'=>$request->reason]);
         return redirect('/admin/room_reserve_manage');
     }
 
-    function showCompletedRoomReserve(){
+    public function showCompletedRoomReserve(){
         $records = ClassroomRecord::with('classroom')
             ->with('reserver')
             ->where('status','1')
@@ -83,7 +107,7 @@ class ClassroomRecordController extends Controller
         return view('admin.room_reserve_complete',$data);
     }
 
-    function showSelfRoomReserve(){
+    public function showSelfRoomReserve(){
         $user = Auth::user();
         $completedRecords = ClassroomRecord::with('classroom')
             ->where('status', '1')
@@ -97,7 +121,7 @@ class ClassroomRecordController extends Controller
         return view('user.review_reserve', $data);
     }
 
-    function addBorrow($id){
+    public function addBorrow($id){
         ClassroomRecord::where('id',$id)
             ->update([
                 'borrow_datetime'=>date("Y-m-d H:i:s"),
@@ -106,11 +130,11 @@ class ClassroomRecordController extends Controller
         return redirect('/user/not_returned');
     }
 
-    function showBorrowIndex(){
+    public function showBorrowIndex(){
         return view('user.room_borrow');
     }
 
-    function userHistory(){
+    public function userHistory(){
         $records = ClassroomRecord::with('classroom')
             ->where('borrow_user_id', Auth::id())
             ->whereNotNull('return_datetime')
@@ -119,12 +143,27 @@ class ClassroomRecordController extends Controller
         return view('user.classroom_history', $data);
     }
 
-    function adminHistory(){
+    public function adminHistory(){
         $records = ClassroomRecord::with('classroom')
             ->with('user')
             ->whereNotNull('return_datetime')
             ->paginate(15);
         $data = compact('records');
         return view('admin.classroom_history', $data);
+    }
+
+    private function isAlreadyReserve($arr){
+        return ClassroomRecord::where('classroom_id', $arr['classroom_id'])
+            ->where('date', $arr['date'])
+            ->where(function($query) use($arr){
+                $query->where(function($query) use($arr){
+                    $query->where('start_time','>=', $arr['start_time'])
+                        ->where('start_time','<', $arr['end_time']);
+                })->orWhere(function($query) use($arr){
+                        $query->where('end_time','>', $arr['start_time'])
+                        ->where('end_time','<=', $arr['end_time']);
+                });
+            })
+            ->count();
     }
 }

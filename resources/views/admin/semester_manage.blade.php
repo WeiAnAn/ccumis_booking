@@ -61,5 +61,10 @@
         </div>
     </div>
 </div>
-
+<script>
+    $(function () {
+        $('#roomManage a[href="#{{count($errors)>0?"create":"view"}}"]').tab('show')
+    })
+    
+</script>
 @endsection

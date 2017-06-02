@@ -2,6 +2,9 @@
     {{csrf_field()}}
     <div class="form-group">
         <label for="semester_id">學期</label>
+        @if($errors->has('semester_id'))
+        <p class="text-danger"><strong>{{$error->first('semester_id')}}</strong></p>
+        @endif
         <select name="semester_id" id="semester_id" class="form-control">
             @foreach($semesters as $semester)
             <option value="{{$semester->id}}">
@@ -12,6 +15,9 @@
     </div>
     <div class="form-group">
         <label for="">星期</label>
+        @if($errors->has('day'))
+        <p class="text-danger"><strong>{{$error->first('day')}}</strong></p>
+        @endif
         <select class="form-control" name="day" id="day">
             <option value="1">星期一</option>
             <option value="2">星期二</option>
@@ -22,6 +28,9 @@
     </div>
     <div class="form-group">
         <label for="classroom">教室</label>
+        @if($errors->has('classroom_id'))
+        <p class="text-danger"><strong>{{$error->first('classroom_id')}}</strong></p>
+        @endif
         <select name="classroom_id" id="classroom" class="form-control">
             @foreach($classrooms as $classroom)
             <option value="{{$classroom->id}}">{{$classroom->name." (人數:$classroom->count)"}}</option>
@@ -30,10 +39,13 @@
     </div>
     <div class="form-group">
         <label for="">時間</label>
+        @if($errors->has('time'))
+        <p class="text-danger"><strong>{{$errors->first('time')}}</strong></p>
+        @endif
         <div class="input-group">
             <div class="col-xs-12 mobile_block">
                 <div class="input-append">
-                    <select class="usrselect" name="startHour">
+                    <select class="usrselect" name="startHour" id="startHour">
                         <option value="08">08</option>
                         <option value="09">09</option>
                         <option value="10">10</option>
@@ -53,7 +65,7 @@
                     <span class="usradd-on">點</span>
                 </div>
                 <div class="input-append">
-                    <select class="usrselect" name="startMin">
+                    <select class="usrselect" name="startMin" id="startMin">
                         <option value="00">00</option>
                         <option value="05">05</option>
                         <option value="10">10</option>
@@ -74,7 +86,7 @@
             <span class="usrspan mobile_block visible-xs">到</span>
             <div class="col-xs-12 mobile_block">
                 <div class="input-append">
-                    <select class="usrselect" name="endHour">
+                    <select class="usrselect" name="endHour" id="endHour">
                             <option value="08">08</option>
                             <option value="09">09</option>
                             <option value="10">10</option>
@@ -94,7 +106,7 @@
                     <span class="usradd-on">點</span>
                 </div>
                 <div class="input-append">
-                    <select class="usrselect" name="endMin">
+                    <select class="usrselect" name="endMin" id="endMin">
                         <option value="00">00</option>
                         <option value="05">05</option>
                         <option value="10">10</option>
@@ -115,11 +127,17 @@
     </div>
     <div class="form-group">
         <label for="name">課程名稱</label>
-        <input type="text" class="form-control" name="name">
+        @if($errors->has('name'))
+        <p class="text-danger"><strong>{{$errors->first('name')}}</strong></p>
+        @endif
+        <input type="text" class="form-control" name="name" value="{{old('name')}}" required>
     </div>
     <div class="form-group">
         <label for="">教師名稱</label>
-        <input type="text" class="form-control" name="borrower">
+        @if($errors->has('borrower'))
+        <p class="text-danger"><strong>{{$errors->first('borrower')}}</strong></p>
+        @endif
+        <input type="text" class="form-control" name="borrower" value="{{old('borrower')}}" required>
     </div>
     <button type="submit" class="btn btn-primary">送出</button>
 </form>

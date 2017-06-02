@@ -11,8 +11,16 @@
             {{csrf_field()}}     
             <div class="usrcontent">選擇設備</div>
             <div class="custom_seperator"></div>
-            
             <div class="row">
+            @if(count($errors)>0)
+                @if($errors->has('equipment_id'))
+                    <p class="text-danger"><strong>請選擇要借用的設備</strong></p>
+                @elseif($errors->has('count'))
+                    <p class="text-danger"><strong>{{$errors->first('count')}}</strong></p>
+                @else
+                    <p class="text-danger"><strong>借用數量必須大於0</strong></p>
+                @endif
+            @endif
             @foreach($equipment as $item)
                 <div class="col-xs-6 col-md-4 col-lg-3">
                     <div class="checkbox">
@@ -21,7 +29,7 @@
                             {{$item->name}} (剩餘:{{$item->remain}})
                             <div class="defaultHide defaultWidth">
                                 <label class="equipLabelx">x</label>
-                                <input type="number" class="form-control" min="1" value="1" name="count[{{$item->id}}]">
+                                <input type="number" class="form-control"  value="1" name="count[{{$item->id}}]">
                             </div>
                         </label>
                         

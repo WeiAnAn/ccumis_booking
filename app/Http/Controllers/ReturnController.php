@@ -25,7 +25,7 @@ class ReturnController extends Controller
         return view('user.not_returned', $data);
     }
 
-    public function return(Request $request){
+    public function doReturn(Request $request){
         $equipment = $request->item;
         $classrooms = $request->classroom;
         if(gettype($classrooms) == "array")
