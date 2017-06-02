@@ -101,6 +101,9 @@ Route::group(['middleware' => 'auth'], function(){
 
 });
 
+Route::get('search', function(){
+    return view('classroom.room_search');
+});
 
 Auth::routes();
 ?>
