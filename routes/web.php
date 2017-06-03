@@ -72,6 +72,10 @@ Route::group(['middleware' => ['isAdmin', 'auth']], function(){
     
     Route::get('/admin/classroom_history', 'ClassroomRecordController@adminHistory');
     Route::get('/admin/equipment_history', 'EquipmentRecordController@adminHistory');
+
+    Route::get('/admin/rule_edit', 'RuleController@edit');
+    Route::post('/admin/rule_update', 'RuleController@update');
+    
 });
 
 
@@ -104,6 +108,7 @@ Route::group(['middleware' => 'auth'], function(){
 Route::get('search', function(){
     return view('classroom.room_search');
 });
+Route::get('rule', 'RuleController@index');
 
 Auth::routes();
 ?>
