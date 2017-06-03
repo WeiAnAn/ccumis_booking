@@ -16,6 +16,7 @@
     <script src="{{asset('js/bootstrap-datepicker.min.js')}}"></script>
     <script src="{{asset('js/bootstrap-datepicker.zh-TW.min.js')}}"></script>
     <script src="{{asset('js/moment.js')}}"></script>
+    @yield('header')
 </head>
 <body>
     <div class="wrapper">
