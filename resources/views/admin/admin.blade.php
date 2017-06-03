@@ -93,6 +93,16 @@
             </div>
         </div>
     </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <div class="panel panel-default card">
+            <div class="panel-heading">修改使用規範</div>
+            <div class="panel-body" >
+                <h2 class="card_title">修改使用規範</h2>
+                <p>此區可修改使用規範</p>
+                <a href="{{URL('/admin/rule_edit')}}" class="btn btn-primary card_button">前往</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 @endsection
