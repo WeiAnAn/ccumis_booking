@@ -85,6 +85,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/user', function(){
         return view('user.user');
     });
+
+    Route::get('/user/edit', 'UserController@edit');
+    Route::post('/user/update', 'UserController@update');
     
     Route::get('/user/room_reserve', 'ClassroomRecordController@roomReserveIndex');
     Route::post('/user/room_reserve_add', 'ClassroomRecordController@addRoomReserve');
