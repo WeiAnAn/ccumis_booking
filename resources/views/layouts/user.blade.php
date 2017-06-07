@@ -21,6 +21,9 @@
     <li class="custom_seperator">
         <a href="{{URL('/user/equipment_history')}}">設備借用歷史紀錄</a>
     </li>
+    <li class="list-group-item">
+        <a href="{{URL('/user/edit')}}">修改個人資料</a>
+    </li>
 </ul>
 
 <div class="panel panel-default hidden-lg hidden-md">
@@ -53,6 +56,9 @@
             </li>
             <li class="list-group-item">
                 <a href="{{URL('/user/equipment_history')}}">設備借用歷史紀錄</a>
+            </li>
+            <li class="list-group-item">
+                <a href="{{URL('/user/edit')}}">修改個人資料</a>
             </li>
         </ul>
     </div>
