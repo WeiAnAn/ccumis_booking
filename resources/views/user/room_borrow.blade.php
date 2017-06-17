@@ -48,7 +48,6 @@
             var data = JSON.parse(json);
             var url = document.URL;
             url = url.substr(0, url.indexOf('user'));
-            console.log(url);
             var content = data.map(function(item){
                 var row = "";
                 row = "<tr>";
