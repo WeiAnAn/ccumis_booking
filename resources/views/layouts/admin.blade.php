@@ -42,36 +42,16 @@
     <div class="panel-collapse collapse" role="tabpanel" id="collapse" 
         aria-labelledby="tab" aria-expanded="false">
         <ul class="list-group">
-            <li class="list-group-item">
-                <a href="{{URL('/admin/not_returned')}}">未歸還設備教室</a>
-            </li>
-            <li class="list-group-item">
-                <a href="{{URL('/admin/room_reserve_manage')}}">待審核預約</a>
-            </li>
-            <li class="list-group-item">
-                <a href="{{URL('/admin/room_reserve_completed')}}">已審核預約</a>
-            </li>
-            <li role="presentation" class="list-group-item">
-                <a href="{{URL('/admin/room_manage')}}">教室管理</a>
-            </li>
-            <li role="presentation" class="list-group-item">
-                <a href="{{URL('/admin/equipment_manage')}}">設備管理</a>
-            </li>
-            <li class="list-group-item">
-                <a href="{{URL('/admin/semester_manage')}}">學期資料管理</a>
-            </li>
-            <li class="list-group-item">
-                <a href="{{URL('/admin/semester_class_manage')}}">學期課程管理</a>
-            </li>
-            <li class="list-group-item">
-                <a href="{{URL('/admin/classroom_history')}}">教室借用歷史紀錄</a>
-            </li>
-            <li class="list-group-item">
-                <a href="{{URL('/admin/equipment_history')}}">設備借用歷史紀錄</a>
-            </li>
-            <li class="custom_seperator">
-                <a href="{{URL('/admin/rule_edit')}}">修改使用規範</a>
-            </li>
+            <a class="list-group-item" href="{{URL('/admin/not_returned')}}">未歸還設備教室</a>
+            <a class="list-group-item" href="{{URL('/admin/room_reserve_manage')}}">待審核預約</a>
+            <a class="list-group-item" href="{{URL('/admin/room_reserve_completed')}}">已審核預約</a>
+            <a class="list-group-item" href="{{URL('/admin/room_manage')}}">教室管理</a>
+            <a class="list-group-item" href="{{URL('/admin/equipment_manage')}}">設備管理</a>
+            <a class="list-group-item" href="{{URL('/admin/semester_manage')}}">學期資料管理</a>
+            <a class="list-group-item" href="{{URL('/admin/semester_class_manage')}}">學期課程管理</a>
+            <a class="list-group-item" href="{{URL('/admin/classroom_history')}}">教室借用歷史紀錄</a>
+            <a class="list-group-item" href="{{URL('/admin/equipment_history')}}">設備借用歷史紀錄</a>
+            <a class="list-group-item" href="{{URL('/admin/rule_edit')}}">修改使用規範</a>
         </ul>
     </div>
 </div>

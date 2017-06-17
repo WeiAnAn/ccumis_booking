@@ -33,27 +33,13 @@
     <div class="panel-collapse collapse" role="tabpanel" id="collapse" 
         aria-labelledby="tab" aria-expanded="false">
         <ul class="list-group">
-            <li class="list-group-item">
-                <a href="{{URL('/user/not_returned')}}">歸還教室與設備</a>
-            </li>
-            <li class="list-group-item">
-                <a href="{{URL('/user/room_borrow')}}">教室借用</a>
-            </li>
-            <li role="presentation" class="list-group-item">
-                <a href="{{URL('/user/equipment_borrow')}}">設備借用</a>
-            </li>
-            <li role="presentation" class="list-group-item" >
-                <a href="{{URL('/user/room_reserve')}}">預約教室</a>
-            </li>
-            <li role="presentation" class="list-group-item">
-                <a href="{{URL('/user/review_reserve')}}">審核中預約</a>
-            </li>
-            <li class="list-group-item">
-                <a href="{{URL('/user/classroom_history')}}">教室借用歷史紀錄</a>
-            </li>
-            <li class="list-group-item">
-                <a href="{{URL('/user/equipment_history')}}">設備借用歷史紀錄</a>
-            </li>
+            <a class="list-group-item" href="{{URL('/user/not_returned')}}">歸還教室與設備</a>
+            <a class="list-group-item" href="{{URL('/user/room_borrow')}}">教室借用</a>
+            <a class="list-group-item" href="{{URL('/user/equipment_borrow')}}">設備借用</a>
+            <a class="list-group-item" href="{{URL('/user/room_reserve')}}">預約教室</a>
+            <a class="list-group-item" href="{{URL('/user/review_reserve')}}">審核中預約</a>
+            <a class="list-group-item" href="{{URL('/user/classroom_history')}}">教室借用歷史紀錄</a>
+            <a class="list-group-item" href="{{URL('/user/equipment_history')}}">設備借用歷史紀錄</a>
         </ul>
     </div>
 </div>
