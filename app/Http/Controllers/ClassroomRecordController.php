@@ -166,4 +166,29 @@ class ClassroomRecordController extends Controller
             })
             ->count();
     }
+
+    public function searchView(){
+        $classrooms = Classroom::all();
+        
+        $data = compact('classrooms');
+        return view('room_search', $data);
+    }
+
+    public function search(Request $request){
+        $records = ClassroomRecord::with('classroom');
+        $classrooms = Classroom::all();
+    
+        if($request->classroom_id != null)
+            $records = $records->where('classroom_id', $request->classroom_id);
+
+        if($request->name != null)
+            $records = $records->where('name', 'like', "%$request->name%");
+
+        $records = $records->where('status', '>', 0)
+            ->paginate();
+        
+        $records->appends($request->except("page"));
+        $data = compact('classrooms', 'records');
+        return view('room_search', $data);
+    }
 }

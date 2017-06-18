@@ -116,10 +116,10 @@ Route::group(['middleware' => 'auth'], function(){
 
 });
 
-Route::get('search', function(){
-    return view('classroom.room_search');
-});
-Route::get('rule', 'RuleController@index');
+Route::get('/search', 'ClassroomRecordController@searchView');
+Route::get('/search_record',"ClassroomRecordController@search");
+
+Route::get('/rule', 'RuleController@index');
 
 Auth::routes();
 ?>
