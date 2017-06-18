@@ -84,52 +84,6 @@ class UserController extends Controller
 
     public function upload(Request $request){
         
-        // Excel::load($request->file('file'), function($reader){
-        //     $result = $reader->toArray();
-        //     foreach($result as $line => $array){
-        //         $errorLine = $line+2;
-        //         $index = 0;
-        //         $newArray = [];
-        //         foreach($array as $item){
-        //             switch($index){
-        //                 case 0:
-        //                     $newArray['username'] = (string)$item;
-        //                     break;
-        //                 case 1:
-        //                     $newArray['password'] = bcrypt($item);
-        //                     break;
-        //                 case 2:
-        //                     $newArray['phone'] = $item;
-        //                     break;
-        //                 case 3:
-        //                     $newArray['name'] = $item;
-        //                     break;
-        //                 default:
-        //                     break;
-        //             }
-        //             $index++;
-        //         }
-        //         $validator = Validator::make($newArray,[
-        //                 'name' => 'required|string|max:191',
-        //                 'username' => 'required|string|max:191|unique:users',
-        //                 'password' => 'required|string|min:6|max:191',
-        //                 'phone' => 'required|string|size:10',
-        //             ],[
-        //                 'required'=>"必須填寫 :attribute 欄位,第 $errorLine 行",
-        //                 'min'=>':attribute 欄位的輸入長度不能大於:min'.",第 $errorLine 行",
-        //                 'max'=>':attribute 欄位的輸入長度不能大於:max'.",第 $errorLine 行",
-        //                 'unique'=>"使用者帳號已申請, 第 $errorLine 行"
-        //             ]);
-
-        //         if($validator->fails()){
-        //             return redirect('/admin/user_upload')
-        //                 ->withErrors($validator);
-        //         }
-
-        //         array_push($insertArr, $newArray);
-        //     }
-        //     User::insert($insertArr);
-        // });
         $result = Excel::load($request->file('file'), function($reader){
             })->toArray();
 
@@ -179,7 +133,7 @@ class UserController extends Controller
 
             array_push($insertArr, $newArray);
         }
-        
+
         User::insert($insertArr);
         return redirect('/admin/user');
     }
