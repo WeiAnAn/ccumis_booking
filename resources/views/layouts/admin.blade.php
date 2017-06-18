@@ -30,6 +30,9 @@
     <li class="custom_seperator">
         <a href="{{URL('/admin/rule_edit')}}">修改使用規範</a>
     </li>
+    <li class="custom_seperator">
+        <a href="{{URL('/admin/user')}}">學生管理</a>
+    </li>
 </ul>
 
 <div class="panel panel-default hidden-lg hidden-md">
@@ -52,6 +55,7 @@
             <a class="list-group-item" href="{{URL('/admin/classroom_history')}}">教室借用歷史紀錄</a>
             <a class="list-group-item" href="{{URL('/admin/equipment_history')}}">設備借用歷史紀錄</a>
             <a class="list-group-item" href="{{URL('/admin/rule_edit')}}">修改使用規範</a>
+            <a class="list-group-item" href="{{URL('/admin/user')}}">學生管理</a>
         </ul>
     </div>
 </div>
