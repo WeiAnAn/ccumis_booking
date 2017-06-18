@@ -132,6 +132,9 @@ class UserController extends Controller
         // });
         $result = Excel::load($request->file('file'), function($reader){
             })->toArray();
+
+        $insertArr = [];
+
         foreach($result as $line => $array){
             $errorLine = $line+2;
             $index = 0;
@@ -155,6 +158,7 @@ class UserController extends Controller
                 }
                 $index++;
             }
+            
             $validator = Validator::make($newArray,[
                     'name' => 'required|string|max:191',
                     'username' => 'required|string|max:191|unique:users',
@@ -165,7 +169,8 @@ class UserController extends Controller
                     'min'=>':attribute 欄位的輸入長度不能大於:min'.",第 $errorLine 行",
                     'max'=>':attribute 欄位的輸入長度不能大於:max'.",第 $errorLine 行",
                     'unique'=>"使用者帳號已申請, 第 $errorLine 行"
-                ]);
+                ]
+            );
 
             if($validator->fails()){
                 return redirect('/admin/user_upload')
@@ -174,6 +179,7 @@ class UserController extends Controller
 
             array_push($insertArr, $newArray);
         }
+        
         User::insert($insertArr);
         return redirect('/admin/user');
     }

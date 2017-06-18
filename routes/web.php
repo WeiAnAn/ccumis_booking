@@ -82,6 +82,7 @@ Route::group(['middleware' => ['isAdmin', 'auth']], function(){
     Route::post('/admin/user_upload', 'UserController@upload');
     Route::get('/admin/user_edit/{id}', 'UserController@adminEdit');
     Route::post('/admin/user_update/{id}', 'UserController@adminUpdate');
+    Route::post('/admin/user_delete/{id}', 'UserController@delete');
     
 });
 
