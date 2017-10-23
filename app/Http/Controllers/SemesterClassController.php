@@ -18,7 +18,7 @@ class SemesterClassController extends Controller
         $semesterClasses = SemesterClass::with('semester')
             ->with('classroom')
             ->orderBy('day', 'asc')
-            ->orderBy('time', 'asc')
+            ->orderBy('start_time', 'asc')
             ->get();
         $array = compact("semesters","classrooms","semesterClasses");
         return view('admin.semester_class_manage', $array);
