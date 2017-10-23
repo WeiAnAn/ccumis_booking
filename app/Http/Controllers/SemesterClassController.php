@@ -13,10 +13,12 @@ use Validator;
 class SemesterClassController extends Controller
 {
     public function index(){
-        $semesters = Semester::orderBy('id', 'desc')->get();;
+        $semesters = Semester::orderBy('id', 'desc');
         $classrooms = Classroom::all();
         $semesterClasses = SemesterClass::with('semester')
             ->with('classroom')
+            ->orderBy('day', 'asc')
+            ->orderBy('time', 'asc')
             ->get();
         $array = compact("semesters","classrooms","semesterClasses");
         return view('admin.semester_class_manage', $array);
