@@ -13,7 +13,7 @@ use Validator;
 class SemesterClassController extends Controller
 {
     public function index(){
-        $semesters = Semester::all();
+        $semesters = Semester::orderBy('id', 'desc')->get();;
         $classrooms = Classroom::all();
         $semesterClasses = SemesterClass::with('semester')
             ->with('classroom')
@@ -69,7 +69,7 @@ class SemesterClassController extends Controller
     }
 
     public function edit($id){
-        $semesters = Semester::all();
+        $semesters = Semester::orderBy('id', 'desc')->get();
         $classrooms = Classroom::all();
         $class = SemesterClass::
             with('semester')

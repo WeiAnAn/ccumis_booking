@@ -29,6 +29,7 @@ class ClassroomRecordController extends Controller
             ->where('date', $request->date)
             ->where('reserve_user_id', $user->id)
             ->where('borrow_datetime', null)
+            ->orderBy('start_time', 'asc')          
             ->get();
         foreach ($records as $record) {
             $record['_token'] = csrf_token();
