@@ -14,6 +14,7 @@ class ClassroomRecordController extends Controller
         $data = ClassroomRecord::with('classroom')
             ->where('date',$request->date)
             ->where('status','>',0)
+            ->orderBy('start_time', 'acs')
             ->get();
         return $data->toJson();
     }
