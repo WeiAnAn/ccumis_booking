@@ -13,7 +13,7 @@ use Validator;
 class SemesterClassController extends Controller
 {
     public function index(){
-        $semesters = Semester::orderBy('id', 'desc');
+        $semesters = Semester::orderBy('id', 'desc')->get();
         $classrooms = Classroom::all();
         $semesterClasses = SemesterClass::with('semester')
             ->with('classroom')
@@ -104,8 +104,8 @@ class SemesterClassController extends Controller
             ]);
         $updateArr = $request->except(['_token', 'startHour', 'startMin', 'endHour', 'endMin']);
         
-        $validator->after(function($validator) use($updateArr){
-            if($this->isAlreadyReserve($updateArr))
+        $validator->after(function($validator) use($updateArr, $id){
+            if($this->isAlreadyReserveAndNotSameCourse($updateArr, $id))
                 $validator->errors()->add('time', '此時段已有借用紀錄');
             if($updateArr['start_time']>$updateArr['end_time'])
                 $validator->errors()->add('time', '開始時間需在結束時間之前');
@@ -115,18 +115,24 @@ class SemesterClassController extends Controller
             return redirect("/admin/semester_class_edit/$id")->withErrors($validator)->withInput();
 
         SemesterClass::where('id',$id)
-            ->update($updateArr);
+                     ->update($updateArr);
+
         if($originClass->day == $request->day && $originClass->semester_id == $request->semester_id){
             $updateArr = $request->except(['_token', 'startHour', 'startMin', 'endHour', 'endMin','semester_id', 'day']);
             ClassroomRecord::where('semester_class_id', $id)
-                ->update($updateArr);
+                           ->update($updateArr);
         }else{
-            ClassroomRecord::where('semester_class_id', $id)
-                ->delete();
-
             $semester = Semester::find($request->semester_id);
-            $addDate = $this->getNearDay($semester->start_date, $request->day);
-            $firstDate = strtotime($semester->start_date." +".$addDate." days");
+
+            $firstDate = date('Y-m-d', max(time(), strtotime($semester->start_date)));
+
+            //delete record after first date
+            ClassroomRecord::where('semester_class_id', $id)
+                           ->where('date', '>', $firstDate)
+                           ->delete();
+
+            $addDate = $this->getNearDay( $firstDate, $request->day);
+            $firstDate = strtotime($firstDate." +".$addDate." days");
             $endDate = strtotime($semester->end_date);
             
             $arr = $request->all();
@@ -135,7 +141,8 @@ class SemesterClassController extends Controller
             $arr['user_id'] = Auth::id();
             $arr['status'] = 2;
             $arr['semester_class_id'] = $id;
-            
+            $arr['reserve_user_id'] = Auth::id();
+
             for($date = $firstDate;$date<$endDate;$date+=86400*7){
                 $arr['date'] = date("Y-m-d",$date);
                 ClassroomRecord::create($arr);
@@ -174,5 +181,28 @@ class SemesterClassController extends Controller
                 });
             })
             ->count();
+    }
+    
+    private function isAlreadyReserveAndNotSameCourse($arr, $id){
+        $classes =  SemesterClass::where('classroom_id', $arr['classroom_id'])
+                     ->where('day', $arr['day'])
+                     ->where(function($query) use($arr){
+                         $query->where(function($query) use($arr){
+                             $query->where('start_time','>=', $arr['start_time'])
+                                 ->where('start_time','<', $arr['end_time']);
+                         })->orWhere(function($query) use($arr){
+                                 $query->where('end_time','>', $arr['start_time'])
+                                 ->where('end_time','<=', $arr['end_time']);
+                         });
+                     })
+                     ->get();
+        if(count($classes) === 0)
+            return false;
+
+        if(count($classes) === 1){
+            if($id == $classes[0]->id)
+                return false;
+        }
+        return true;
     }
 }
