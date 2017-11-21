@@ -33,7 +33,7 @@ class UserController extends Controller
 
     public function admin(Request $request){
         $users = User::where('id', "!=" ,Auth::id())
-            ->get();
+            ->paginate();
 
         $data = compact('users');
         return view('admin.user', $data);
