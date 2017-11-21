@@ -117,12 +117,13 @@ class UserController extends Controller
                     'name' => 'required|string|max:191',
                     'username' => 'required|string|max:191|unique:users',
                     'password' => 'required|string|min:6|max:191',
-                    'phone' => 'required|string|size:10',
+                    'phone' => 'nullable|string|size:10',
                 ],[
                     'required'=>"必須填寫 :attribute 欄位,第 $errorLine 行",
                     'min'=>':attribute 欄位的輸入長度不能大於:min'.",第 $errorLine 行",
                     'max'=>':attribute 欄位的輸入長度不能大於:max'.",第 $errorLine 行",
-                    'unique'=>"使用者帳號已申請, 第 $errorLine 行"
+                    'unique'=>"使用者帳號已申請, 第 $errorLine 行",
+                    'size'=>':attribute 欄位的輸入長度要等於:size'.",第 $errorLine 行"
                 ]
             );
 
