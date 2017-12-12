@@ -31,7 +31,7 @@
                     </li>
                     
                 @else
-                    <li><a href="{{URL('/register')}}">註冊</a></li>
+                    <li><a href="{{URL('/quick_login')}}">快速登入</a></li>
                     <li><a href="{{URL('/login')}}">登入</a></li>
                 @endif
 
