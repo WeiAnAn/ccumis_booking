@@ -45,7 +45,9 @@
                             let textDecoder = new TextDecoder();
                             console.log(textDecoder.decode(data));
                             cardInput.value = textDecoder.decode(data);
-                            form.submit();
+                            port.disconnect().then(() => {
+                                form.submit();
+                            });
                         }
                         port.onReceiveError = error => {
                             console.log('Receive error: ' + error);
