@@ -31,6 +31,8 @@
 
 Route::get('/','HomeController@index');
 Route::get('/home', 'HomeController@index');
+Route::get('/quick_login', 'QuickLoginController@index');
+Route::post('/quick_login', 'QuickLoginController@login');
 
 Route::group(['middleware' => ['isAdmin', 'auth']], function(){
 
@@ -96,6 +98,9 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/user/edit', 'UserController@edit');
     Route::post('/user/update', 'UserController@update');
+
+    Route::get('/user/id_card', 'QuickLoginController@edit');
+    Route::post('/user/id_card', 'QuickLoginController@update');
     
     Route::get('/user/room_reserve', 'ClassroomRecordController@roomReserveIndex');
     Route::post('/user/room_reserve_add', 'ClassroomRecordController@addRoomReserve');
