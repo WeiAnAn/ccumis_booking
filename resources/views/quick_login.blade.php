@@ -7,6 +7,12 @@
 @section('content')
     <div>
         <h2>快速登入</h2>
+        @if(session('error'))
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{session('error')}}
+        </div>
+        @endif
         <div>
             <p id="information" class="text-danger"></p>
             <button id="connect" class="btn btn-default">連接讀卡機</button>
@@ -15,7 +21,7 @@
             {{ csrf_field() }}
             @if($errors->count()>0)
             <p class="text-danger">
-                <strong>帳號或密碼錯誤</strong>
+                <strong>無效的卡片或是還未註冊的卡片，請先登入註冊卡片</strong>
             </p>
             @endif
             <input type="text" hidden name="id_card" id="id_card">
